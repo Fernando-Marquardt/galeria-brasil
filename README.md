@@ -1,4 +1,6 @@
-galeria-brasil
+Galeria Brasil 4
 ==============
 
-Galeria Brasil
+Nova versão da Galeria Brasil agora melhorada.
+
+O framework base da galeria é baseado no mini framework Swiftlet (http://www.swiftlet.org).
