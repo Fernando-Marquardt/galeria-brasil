@@ -1,0 +1,21 @@
+{
+  "name": "galeria-brasil",
+  "version": "4.0.0",
+  "description": "Galeria de imagens open source.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fernando-Marquardt/galeria-brasil.git"
+  },
+  "author": "Fernando Marquardt <fernando.marquardt@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fernando-Marquardt/galeria-brasil/issues"
+  },
+  "homepage": "https://github.com/Fernando-Marquardt/galeria-brasil#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}

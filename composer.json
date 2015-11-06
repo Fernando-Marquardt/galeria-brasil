@@ -1,0 +1,15 @@
+{
+    "name": "fernando-marquardt/galeria-brasil",
+    "description": "Aplicativo para galeria de imagens open source.",
+    "type": "project",
+    "require": {
+        "slim/slim": "^3.0@RC"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fernando Marquardt",
+            "email": "fernando.marquardt@gmail.com"
+        }
+    ]
+}
