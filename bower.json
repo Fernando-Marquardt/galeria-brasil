@@ -5,7 +5,7 @@
     "Fernando Marquardt <fernando.marquardt@gmail.com>"
   ],
   "description": "Galeria de imagens open source.",
-  "main": "",
+  "main": "public_html/index.html",
   "moduleType": [],
   "license": "MIT",
   "ignore": [
