@@ -58,6 +58,10 @@ body {
     padding: 24px;
 }
 
+.panel .panel-body .form-group:last-child {
+    margin-bottom: 0;
+}
+
 .panel-footer {
     background-color: #fafafa;
     border: 0;
