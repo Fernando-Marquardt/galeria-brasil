@@ -17,6 +17,11 @@
   ],
   "dependencies": {
     "angular": "~1.4.7",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "angular-route": "~1.4.7",
+    "angular-bootstrap": "~0.14.3",
+    "angular-loading-bar": "~0.8.0",
+    "angular-resource": "~1.4.7",
+    "sweetalert2": "~0.2.3"
   }
 }
