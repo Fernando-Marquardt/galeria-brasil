@@ -3,9 +3,17 @@
 =====================================================================================
 
 Legenda:
-	[*] Corrigido
+	[*] Corrigido, Alterado
 	[+] Adicionado, melhorado
 	[-] Removido
+	
+Versão 3.1.1 Beta:
+	[+] Fancy Upload atualizado, agora com suporte à Flash 10
+
+	[*] Corrigida falha ao utilizar imagens PNG semi-transparentes como marca d'água
+	[*] CSS re-organizado para ter um melhor entendimento e alterar os estilos de maneira mais prática
+	[*] Alterada a qualidade das imagens JPG para 100%
+	[*] Corrigido bug com session no upload de imagens no Firefox
 
 Versão 3.1.0 Beta:
 		

@@ -4,6 +4,12 @@
  * 
  * Log:
  * 
+ * (2.5.1) 04/11/2008
+ * 		- Corrigida falha ao carregar imagens PNG com transparência
+ * 		- Alterada a forma como a classe carrega GIF. Agora o GIF é convertido para uma imagem Truecolor
+ * 		- Corrigida falha ao utilizar Marca D'Água em PNG Transparente
+ * 		- {@link watermark()} agora utiliza imagecopy ao invés de imagecopymerge por haver um bug com o alpha channel. A opacidade da marca d'água deve ser aplicada diretamente na imagem à ser usada
+ * 
  * (2.5.0) 30/07/2008
  * 		- Incluido o método {@link watermark()}, que possibilita adicionar uma marca d'água na imagem
  * 		- Foi acrescentado no método {@link get_info()} o parâmetro $src possibilitando que ele busque informações de outras imagens
@@ -27,13 +33,14 @@
  * 		- PNG (2.0)
  * 
  * @author Fernando Marquardt <fernando.marquardt@gmail.com>
- * @version 2.5.0
+ * @version 2.5.1
  * @package Image
  * 
  * @todo Incluir suporte à outros tipos de imagem
  * @todo Incluir possibilidade de usar uma cor de fundo na imagem redimensionada
  * @todo Resolver o problema no uso combinado de {@link add_string()} e {@link resize()}. Onde a string acaba sendo redimensionada junto com o resto da imagem
- * @todo Melhorar o uso de Strings na Classe, dando a possibilidade de utilizar fontes maiores e fontes em True Type 
+ * @todo Melhorar o uso de Strings na Classe, dando a possibilidade de utilizar fontes maiores e fontes em True Type
+ * @todo Verificar erro ao utilizar cor de fundo em {@link add_string()}. Não está aceitando a cor do texto 
  *
  */
 
@@ -87,6 +94,18 @@ class Image {
 					trigger_error('Image Class: A versão da Biblioteca GD não possui suporte à GIF', E_USER_NOTICE);
 					
 					$error = true;
+				} else {
+					/**
+					 * Transforma o GIF 8-Bit em uma imagem Truecolor
+					 */
+					$img_width = imagesx($src);
+					$img_height = imagesy($src);
+					
+					$tempimage = imagecreatetruecolor($img_width, $img_height);
+					
+					imagecopy($tempimage, $image, 0, 0, 0, 0, $img_width, $img_height);
+					
+					$image = $tempimage;
 				}
 				break;
 			case IMAGETYPE_JPEG:
@@ -97,6 +116,12 @@ class Image {
 			case IMAGETYPE_PNG:
 				if (!($image = @imagecreatefrompng($src))) {
 					$error = true;
+				} else {
+					/**
+					 * Ativa as opções de Alpha Blending, para o GD conseguir tratar corretamente PNGs com transparência
+					 */
+					imagealphablending($image, false);
+					imagesavealpha($image, true);
 				}
 				break;
 		}
@@ -295,7 +320,7 @@ class Image {
 	 *
 	 * <b>Exemplo:</b>
 	 * <code>
-	 * $img->draw(IMAGETYPE_GIF); // Irá imprimir o buffer da imagem com sua respectiva header convertida em GIF
+	 * $img->draw(null, IMAGETYPE_GIF); // Irá imprimir o buffer da imagem com sua respectiva header convertida em GIF
 	 * </code>
 	 * 
 	 * <b>Exemplo 2:</b>
@@ -470,10 +495,7 @@ class Image {
 	 * @param int $margin Margem que marca d'água ficará da borda, se não for definida será 20
 	 * @param int $opacity Opacidade da imagem que servirá de marca d'água , se não for definida será 50
 	 */
-	public function watermark($image_path, $pos_x = null, $pos_y = null, $margin = null, $opacity = null) {
-		$opacity = (is_null($opacity)) ? 50 : $opacity;
-		$margin = (is_null($margin)) ? 20 : $margin;
-		
+	public function watermark($image_path, $pos_x = null, $pos_y = null, $margin = 20) {
 		$watermark = $this->load_image($image_path);
 		$watermark_width = imagesx($watermark);
 		$watermark_height = imagesy($watermark);
@@ -502,7 +524,7 @@ class Image {
 			}
 		}
 		
-		imagecopymerge($this->image, $watermark, $pos_x, $pos_y, 0, 0, $watermark_width, $watermark_height, $opacity);
+		imagecopy($this->image, $watermark, $pos_x, $pos_y, 0, 0, $watermark_width, $watermark_height);
 	}
 	
 	/**

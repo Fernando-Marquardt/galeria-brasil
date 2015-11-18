@@ -58,5 +58,5 @@ switch ($_GET['thumb']) {
 		}
 }
 
-$img->draw();
+$img->draw(null, null, 100);
 ?>

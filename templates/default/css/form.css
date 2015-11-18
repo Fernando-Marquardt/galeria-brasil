@@ -1,5 +1,7 @@
 @CHARSET "ISO-8859-1";
 
+/* Elementos do formulário
+-------------------------------------------------------------- */
 input {
 	border: 1px solid #222222;
 	padding: 1px;
@@ -21,8 +23,4 @@ label {
 .checkbox {
 	border: 0;
 	vertical-align: middle;
-}
-
-.button {
-	
 }

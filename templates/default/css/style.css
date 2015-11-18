@@ -1,0 +1,6 @@
+@CHARSET "ISO-8859-1";
+
+@import "common.css";
+@import "structure.css";
+@import "messages.css";
+@import "tooltips.css";

@@ -44,5 +44,5 @@ switch ($_GET['thumb']) {
 		break;
 }
 
-$img->draw();
+$img->draw(null, null, 100);
 ?>

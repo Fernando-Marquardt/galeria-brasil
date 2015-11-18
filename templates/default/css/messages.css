@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+
+/* Mensagens de erro, aviso e sucesso
+-------------------------------------------------------------- */
+
+.error,
+.notice, 
+.success		{ padding: .8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error img,
+.notice img,
+.success img	{ vertical-align: middle; }
+
+.error,
+.success		{ text-align: center; }
+
+.error			{ background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4; }
+.notice			{ background: #FFF6BF; color: #514721; border-color: #FFD324; }
+.success		{ background: #E6EFC2; color: #264409; border-color: #C6D880; }
+.error a		{ color: #8a1f11; }
+.notice a		{ color: #514721; }
+.success a		{ color: #264409; }
+
+/* Mensagem flutuante utilizada nas respostas do Ajax
+-------------------------------------------------------------- */
+.floating_message {
+	background-color: #F5E31D;
+	border: 1px dashed #297A00;
+	color: #297A00;
+	text-align: center;
+	padding: 10px;
+}
+
+.floating_message img {
+	vertical-align: middle;
+}

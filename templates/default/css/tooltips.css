@@ -1,0 +1,7 @@
+@CHARSET "ISO-8859-1";
+
+/* Tooltips
+-------------------------------------------------------------- */
+.tip		{ color: #FFFFFF; background-color: #000000; opacity: 0.80; filter: alpha(opacity=80); width: 150px; z-index: 13000; }
+.tip-title	{ color: #649BDD; font-size: 11px; font-weight: bold;  margin: 0; padding: 8px; }
+.tip-text	{ font-size: 11px; padding: 4px 8px 8px; }

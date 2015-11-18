@@ -1,0 +1,72 @@
+@CHARSET "ISO-8859-1";
+
+@import "common.css";
+@import "messages.css";
+@import "tooltips.css";
+
+/* Container
+-------------------------------------------------------------- */
+#container {
+	padding: 20px;
+}
+
+/* Topo
+-------------------------------------------------------------- */
+#header {
+	background-color: #F5E31D;
+	padding: 10px;
+	color: #297A00;
+	margin-bottom: 10px;
+}
+
+#header h2 {
+	margin-bottom: 0;
+}
+
+/* Lista de imagens
+-------------------------------------------------------------- */
+#lista {
+	background-color: #FFF048;
+	width: 203px;
+	padding: 6px 3px;
+	float: left;
+	display: block;
+	margin-right: 10px;
+}
+
+#lista #imagens img {
+	vertical-align: middle;
+	margin: 2px 1px;
+}
+
+#lista #paginacao {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#lista #paginacao img {
+	vertical-align: middle;
+}
+
+/* Imagem principal
+-------------------------------------------------------------- */
+#imagem {
+	float: left;
+	display: block;
+	width: 400px;
+	text-align: center;
+}
+
+#imagem #toolbar {
+	margin: 10px 0;
+}
+
+/* Rodapé
+-------------------------------------------------------------- */
+#footer {
+	width: 100%;
+	margin-top: 20px;
+	font-size: 10px;
+	text-align: center;
+	clear: both;
+}
