@@ -1,15 +1,14 @@
 <?
-include ("../register_global.php");
 include("path.php");
 
-$query = mysql_query("Select * From users where login='$login_' and senha='$senha_'");
+$query = mysql_query("Select * From users where login='". $_POST['login_'] ."' and senha='". $_POST['senha_'] ."'");
 $valida = mysql_fetch_array($query);
 
 $user = $valida["login"];
 $pass = $valida["senha"];
 $nivel = $valida["nivel"];
 
-if($login_ == '' || $senha_ == ''){
+if($_POST['login_'] == '' || $_POST['senha_'] == ''){
 ?>
 <? include("../include/config.php");?>
 <HTML>
@@ -50,12 +49,12 @@ return (true);
 </form>
 </HTML>
 <?
-} elseif($login_ == $user && $senha_ == $pass){
-setcookie("usuario", $login_,0,"/");
-setcookie("senha", $senha_,0,"/");
+} elseif($_POST['login_'] == $user && $_POST['senha_'] == $pass){
+setcookie("usuario", $_POST['login_'],0,"/");
+setcookie("senha", $_POST['senha_'],0,"/");
 setcookie("nivel",$nivel,0,"/");
 header("Location: administrar.php");
-} elseif($login_ != $valida["login"] || $senha_ != $valida["senha"]){
+} elseif($_POST['login_'] != $valida["login"] || $_POST['senha_'] != $valida["senha"]){
 ?>
 <? include("../include/config.php");?>
 <HTML>

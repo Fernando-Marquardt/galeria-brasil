@@ -1,0 +1,14 @@
+========== Versão 2.3.4 ===========
+
+[added] Possibilidade de inibir as funções de Imprimir e Enviar por E-Mail
+[added] Possibilidade de escolher forma de envio do E-Mail de indicação, tendo como escolha via mail() ou mailto
+
+[fixed] Arrumado o problema com a paginação na galeria
+[fixed] Corrigido o problema com o Globals Off durante a instalação
+
+[improved] Agora a galeria está 100% compatível com Globals Off
+[improved] Parte do código foi revisado e agora está mais legível
+
+[changed] Modificada a forma de paginação para utilizar Combo Box
+[changed] Alterada a janela das fotos, na forma de visualização e tratamento dos dados
+[changed] Tratamento dos dados foi alterado, não são mais passados todos os dados da galeria através da QueryString

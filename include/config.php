@@ -1,5 +1,4 @@
 <?
-include_once("register_global.php");
 $sql = mysql_query("SELECT * FROM config");
 while ($linha = mysql_fetch_array($sql)) {
 $tsite = $linha["tsite"]; 				// nome do site
@@ -12,7 +11,10 @@ $cortexto = $linha["cortexto"]; 		// cor do texto
 $corcelula1 = $linha["corcelula1"];		// cor dacelula 1
 $corcelula2 = $linha["corcelula2"];    	// cor da celula 2
 $corfundosite = $linha["corfundosite"]; // cor de fundo do site
-$versao = "v2.0";
+$permitir_impressao = $linha['permitir_impressao']; // Indica se deve permitir a impressão das fotos
+$permitir_indicacao = $linha['permitir_indicacao']; // Indica se deve permitir indicar as fotos para os amigos
+$tipo_email = $linha['tipo_email'];		// Forma de envio do E-Mail de indicação
+$versao = "v2.3.4";
 }
 ?>
 <html>

@@ -19,7 +19,7 @@ $rep = opendir('galeria');
 while ($file = readdir($rep)) {
 if($file != '..' && $file !='.' && $file !=''){ 
  if (!is_dir($file)){?>
-<option value="enviar_fotos.php?nomedapasta=<? echo $file?>&nivel=<? echo $nivel?>&usuario=<? echo $usuario?>"><? echo $file?></option>
+<option value="enviar_fotos.php?nomedapasta=<? echo $file?>&nivel=<? echo $nivel?>&usuario=<? echo $_COOKIE['usuario']?>"><? echo $file?></option>
 <?
  }
 }

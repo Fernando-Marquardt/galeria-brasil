@@ -2,16 +2,16 @@
 <? include("menu.php")?>
 
 <?
-$sql = mysql_query("delete from galeria where id='$id'");
+$sql = mysql_query("delete from galeria where id='". $_GET['id'] ."'");
 
-$dir = "../images/galeria/$pasta";
-$dir1=opendir("$dir");
+$dir = "../images/galeria/". $_GET['pasta'];
+$dir1=opendir($dir);
 while ($res=readdir($dir1)){
 if ($res!='' && $res!='.' && $res!='..'){
-$url = "$dir/$res";
-@unlink("$url");
+$url = $dir ."/". $res;
+@unlink($url);
 }}
-@rmdir ("$dir");
+@rmdir ($dir);
 ?>
 <meta http-equiv="refresh" content="1;URL=listar_galerias.php?nivel=<? echo $nivel?>">
 <center>

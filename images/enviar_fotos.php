@@ -1,6 +1,6 @@
 <? include_once ("verifica.php");include("../admin/menu.php")?>
-<form action="envia_fotos_script.php?nivel=<? echo $nivel?>&usuario=<? echo $usuario?>" method="post" enctype="multipart/form-data">
-<input name="nomedapasta" type="hidden" value="<? echo $nomedapasta?>">
+<form action="envia_fotos_script.php?nivel=<? echo $nivel?>&usuario=<? echo $_COOKIE['usuario']?>" method="post" enctype="multipart/form-data">
+<input name="nomedapasta" type="hidden" value="<? echo $_GET['nomedapasta']?>">
  <table width="400" align="center" cellpadding="0" cellspacing="0">
    <TR>
    <TD align="center" height="30"><font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><strong>Enviar 

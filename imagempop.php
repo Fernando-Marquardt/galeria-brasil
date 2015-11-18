@@ -9,4 +9,4 @@ function resize() {
 //--></script>
 </head>
 <body onload="resize();">
-<img src='<? echo $imagem;?>' border="1"> 
+<img src='<? echo $_GET['imagem'];?>' border="1"> 

@@ -1,7 +1,7 @@
 <? include("verifica.php")?>
 <? include("menu.php")?>
 
-<script src="../css/janelas_popup.js" language="JavaScript"></script>
+<script src="../js/janelas_popup.js" language="JavaScript"></script>
 <?
 $sql = mysql_query("SELECT * FROM galeria order by id");
 $total = mysql_num_rows($sql); 

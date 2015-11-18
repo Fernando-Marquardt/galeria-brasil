@@ -1,23 +1,19 @@
 ============================================================================================================================
-   Galeria Brasil v2.1
+   Galeria Brasil v2.3.4 - http://www.sourceforge.net/projects/galeriabrasil
 ============================================================================================================================
-   Desenvolvido por Sandro Porto e Thiago RSL 
-============================================================================================================================
-
-   Email: thiago@pegasusvideo.com.br
+   Desenvolvido por: 
+	Sandro Porto <thiago@pegasusvideo.com.br>
+	Thiago RSL 
+	Fernando Marquardt <fernando.marquardt@gmail.com>
 ============================================================================================================================
    Dúvidas e Sugestões:
-   http://forum.wmonline.com.br/index.php?showtopic=34335  
-
-============================================================================================================================
-
-Foi corrigido um bug que dava uma falha de segurança , e foi melhorada a qualidade dos thumbs de criação e arrumado alguns 
-pequenos bugs que atrapalhavem alguns 
+	http://forum.wmonline.com.br/index.php?showtopic=34335  
+	http://www.sourceforge.net/projects/galeriabrasil
 
 ============================================================================================================================
 
 Orientações Iniciais:
-  - Este leia-me foi desenvolvido com o intuito de facilitar a adaptação do usuário ao script Galeria Brasil v2.0
+  - Este leia-me foi desenvolvido com o intuito de facilitar a adaptação do usuário ao script Galeria Brasil v2
   - A prática é fundamental para a boa interpretação do referido manual.
   - Sempre procure visualizar as alterações que você fizer.
   - Nunca esqueça de efetuar a cópia de segurança de seu banco de dados.
@@ -48,7 +44,7 @@ Dúvidas Frequentes:
       R: Provavelmente é por que vc ainda não cadastrou nenhuma galeria.
 
   - No meu site não aparece as imagens pequenas ou thumbs, por que?
-     R:1ão aparece as imagens pequenas por que ser servidor não tem suporte a biblioteca GD peça a eles que a instalem 
+      R: Não aparece as imagens pequenas por que ser servidor não tem suporte a biblioteca GD peça a eles que a instalem 
 
   - Quando você Cadastrar uma galeria irá abrir uma pagina para enviar as fotos, você poderá enviar até 20 fotos por vez,
     ou você pode enviar todas as fotos via ftp para a pasta correspondente da galeria.
@@ -56,9 +52,10 @@ Dúvidas Frequentes:
 ============================================================================================================================
 
 Outras Informações:
-  a) Caso você encontre alguma dificuldade que este leia-me não foi capaz de ajudar, entre em contato com conoscos:
+  a) Caso você encontre alguma dificuldade que este leia-me não foi capaz de ajudar, entre em contato conosco:
      MSN: sandro_porto@hotmail.com
-     MSN: thiagor_sl@hotmail.com 
+     MSN: thiagor_sl@hotmail.com
+     MSN: fernando_marquardt@hotmail.com
      ou entre no forum que terá muitas pessoas dispostos a ajudá-lo :
      http://forum.wmonline.com.br/index.php?showtopic=34335  
 

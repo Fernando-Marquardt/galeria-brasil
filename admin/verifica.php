@@ -1,7 +1,7 @@
 <?
 // Sistema para verificar se o usuário já está logado ou não
 if(!$_COOKIE["usuario"] && !$_COOKIE["senha"]){
-header("Location: administrar.php?nivel=$nivel");
+header("Location: administrar.php?nivel=". $_GET['nivel']);
 }
 if($acao == sair){
 setcookie("usuario");

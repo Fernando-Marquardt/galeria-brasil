@@ -1,8 +1,8 @@
 <?
-$sql = mysql_query("SELECT * FROM users where id='$id'");
+$sql = mysql_query("SELECT * FROM users where id='". $_GET['id'] ."'");
 while ($dados=mysql_fetch_array($sql)) {
 ?>
-<form action="?nivel=<? echo $nivel?>&acao=altera_db&id=<? echo $id?>" method="post">
+<form action="?nivel=<? echo $nivel?>&acao=altera_db&id=<? echo $_GET['id']?>" method="post">
  <table width="400" align="center" cellpadding="0" cellspacing="0">
    <TR>
       <TD align="center" height="30"><font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><strong>Alterar Usuário</strong></font></td>

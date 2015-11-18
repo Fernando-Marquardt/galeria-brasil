@@ -1,7 +1,7 @@
 <? 
-$versao = "v2.0";
+$versao = "v2.3.4";
 
-if($passo == ""){?>
+if($_GET['passo'] == ""){?>
 <script Language="JavaScript">
 function validate1(form1) {
 if (form1.bd.value == "")
@@ -78,13 +78,13 @@ if (form1.user.value == "")
 
 <?  
 }
-if($passo == 2){
+if($_GET['passo'] == 2){
 $file="include/conexao.php";
 if ( is_file($file)== 0 )
 {
 touch($file);
 }
-$escrever="<? \$conexao = mysql_connect(\"localhost\", \"$user\", \"$pass\"); \$db = mysql_select_db(\"$bd\");?>";
+$escrever="<? \$conexao = mysql_connect(\"localhost\", \"". $_POST['user'] ."\", \"". $_POST['pass'] ."\"); \$db = mysql_select_db(\"". $_POST['bd'] ."\");?>";
 $abre=fopen($file,w);
 fputs($abre,$escrever);
 ?>
@@ -257,6 +257,31 @@ return (true);
                     <input name='corfundosite' type='text' value="#FFCC00" size='32' maxlength="7">
                     </font></td>
                 </tr>
+                <tr>
+                	<td align='right'>
+                		<font size='1' face='Verdana, Arial, Helvetica, sans-serif'>Permitir impressão?</font>
+                	</td>
+					<td>
+						<input type="checkbox" name="permitir_impressao" value="1" />
+					</td>
+                </tr>
+                <tr>
+                	<td align='right'>
+                		<font size='1' face='Verdana, Arial, Helvetica, sans-serif'>Permitir indicação?</font>
+                	</td>
+					<td>
+						<input type="checkbox" name="permitir_indicacao" value="1" />
+					</td>
+                </tr>
+                <tr>
+                	<td align='right'>
+                		<font size='1' face='Verdana, Arial, Helvetica, sans-serif'>Forma de envio dos E-Mails:</font>
+                	</td>
+					<td>
+						<label><input type="radio" name="tipo_email" value="mail" />PHP Mail()</label>
+						<label><input type="radio" name="tipo_email" value="mailto" />Link mailto</label>
+					</td>
+                </tr>
                 <tr> 
                   <td align='right'><font size='1' face='Verdana, Arial, Helvetica, sans-serif'> 
                     Nome do Administrador:</font></td>
@@ -305,7 +330,7 @@ return (true);
 </table>
 <?
 }
-if($passo == 3){
+if($_GET['passo'] == 3){
 include("include/conexao.php");
 $sql = mysql_query("CREATE TABLE users(
 id INT (3) not null AUTO_INCREMENT,
@@ -329,6 +354,9 @@ cortexto VARCHAR (10) not null,
 corcelula1 VARCHAR (10) not null,
 corcelula2 VARCHAR (10) not null,
 corfundosite VARCHAR (10) not null,
+permitir_impressao TINYINT (2) NOT NULL DEFAULT 0,
+permitir_indicacao TINYINT (2) NOT NULL DEFAULT 0,
+tipo_email VARCHAR (30) DEFAULT 'mail',
 PRIMARY KEY (id)
 );");
 
@@ -344,8 +372,11 @@ $sql = mysql_query ("CREATE TABLE galeria (
   PRIMARY KEY  (id)
 );");
 
-$sql = mysql_query("Insert into users values('1', '$admin', '$admine', '$adminl', '$admins', '1')");
-$sql = mysql_query("Insert into config values('1','$tsite', '$usite', '$fonte', '$tfonte', '$ttitulo', '$coronmouse', '$cortexto', '$corcelula1', '$corcelula2', '$corfundosite')");
+$_POST['permitir_impressao'] = ($_POST['permitir_impressao']) ? 1 : 0;
+$_POST['permitir_indicacao'] = ($_POST['permitir_indicacao']) ? 1 : 0;
+
+$sql = mysql_query("Insert into users values('1', '". $_POST['admin'] ."', '". $_POST['admine'] ."', '". $_POST['adminl'] ."', '". $_POST['admins'] ."', '1')");
+$sql = mysql_query("Insert into config values('1','". $_POST['tsite'] ."', '". $_POST['usite'] ."', '". $_POST['fonte'] ."', '". $_POST['tfonte'] ."', '". $_POST['ttitulo'] ."', '". $_POST['coronmouse'] ."', '". $_POST['cortexto'] ."', '". $_POST['corcelula1'] ."', '". $_POST['corcelula2'] ."', '". $_POST['corfundosite'] ."', '". $_POST['permitir_impressao'] ."', '". $_POST['permitir_indicacao'] ."', '". $_POST['tipo_mail'] ."')");
 
 // inicia criação de pasta
 $nomedapasta = "galeria";
@@ -366,10 +397,10 @@ $nomedapasta = "galeria";
             instalado com sucesso.<br>
             <br>
             </font></strong><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Login:<strong> 
-            <? echo $adminl?><br>
-            </strong>Senha:<strong> <? echo $admins?><br>
+            <? echo $_POST['adminl']?><br>
+            </strong>Senha:<strong> <? echo $_POST['admins']?><br>
             <br>
-            <a href='<? echo $usite?>admin/'>Administrar Galeria</a></strong></font><br><br>
+            <a href='<? echo $_POST['usite']?>admin/'>Administrar Galeria</a></strong></font><br><br>
 
 
 </td>

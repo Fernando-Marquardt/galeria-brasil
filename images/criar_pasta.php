@@ -1,7 +1,7 @@
 <?include_once ("verifica.php"); include("menu.php");?>
 
 <?
-mkdir("galeria/$nomedapasta", 0777);
+mkdir("galeria/". $_GET['nomedapasta'], 0777);
 ?>
 <meta http-equiv="refresh" content="2;URL=listar_arquivos.php">
 <center><br>

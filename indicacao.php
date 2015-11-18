@@ -33,11 +33,9 @@ return (true);
 <center>
 <form action="indicacao_cod.php" method="post" onsubmit="return validate(this);">
 
-<input name="dir" type="hidden" value="<? echo $dir?>">
-<input name="evento" type="hidden" value="<? echo $evento?>">
-<input name="data" type="hidden" value="<? echo $data?>">
-<input name="local" type="hidden" value="<? echo $local?>">
-<input name="imagem" type="hidden" value="<? echo $imagem?>">
+<input name="id" type="hidden" value="<?= $_GET['id']?>">
+<input name="imagem" type="hidden" value="<?= $_GET['imagem']?>">
+<input name="pagina" type="hidden" value="<?= $_GET['pg']; ?>" />
               
     <table border="0" cellspacing="2" cellpadding="0">
       <tr> 

@@ -32,11 +32,11 @@ nForm.elements['foto01'].className = "nao";
 </script>
 
 <?
-$sql = mysql_query("SELECT * FROM galeria where id='$id'");
+$sql = mysql_query("SELECT * FROM galeria where id='". $_GET['id'] ."'");
 while ($dados=mysql_fetch_array($sql)) {
 ?>
 
-<Form Action="alterar_db.php?id=<? echo $id?>&nivel=<? echo $nivel?>" Method="Post" enctype="multipart/form-data" name="cadastro" id="cadastro" onsubmit="return validate(this);">
+<Form Action="alterar_db.php?id=<? echo $_GET['id']?>&nivel=<? echo $nivel?>" Method="Post" enctype="multipart/form-data" name="cadastro" id="cadastro" onsubmit="return validate(this);">
   <table width="400" align="center" cellpadding="0" cellspacing="0">
    <TR>
       <TD align="center" height="30"><font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><strong>Alterar 

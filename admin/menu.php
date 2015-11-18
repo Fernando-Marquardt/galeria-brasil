@@ -1,5 +1,4 @@
 <?
-ini_set("register_globals.php","1");
 include("path.php");
 include("../include/config.php");
 $nivel=$_COOKIE['nivel'];
@@ -15,7 +14,7 @@ $nivel=$_COOKIE['nivel'];
       Galerias</a></font></td>
     <td width="14%" style="border-left:1px solid <? echo $cortexto?>;border-top:1px solid <? echo $cortexto?>;border-bottom:1px solid <? echo $cortexto?>"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="../admin/cadastrar.php?nivel=<? echo $nivel?>">Cadastrar 
       Galeria</a></font></td>
-    <td width="14%" style="border-left:1px solid <? echo $cortexto?>;border-top:1px solid <? echo $cortexto?>;border-bottom:1px solid <? echo $cortexto?>"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="../images/select_pastas.php?nivel=<? echo $nivel?>&usuario=<? echo $usuario?>">Enviar 
+    <td width="14%" style="border-left:1px solid <? echo $cortexto?>;border-top:1px solid <? echo $cortexto?>;border-bottom:1px solid <? echo $cortexto?>"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="../images/select_pastas.php?nivel=<? echo $nivel?>&usuario=<? echo $_COOKIE['usuario']?>">Enviar 
       Imagens</a></font></td>
     <td width="14%" style="border-left:1px solid <? echo $cortexto?>;border-top:1px solid <? echo $cortexto?>;border-bottom:1px solid <? echo $cortexto?>"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="../admin/configurar.php?acao=form&id=1&nivel=<? echo $nivel?>">Configurar 
       </a></font></td>
@@ -24,7 +23,7 @@ $nivel=$_COOKIE['nivel'];
   </tr>
 </table>
 <br>
-<font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>">Olá <b><? echo $usuario?></b>, seja bem vindo!</font>
+<font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>">Olá <b><? echo $_COOKIE['usuario']?></b>, seja bem vindo!</font>
 <hr size="1" noshade color="<? echo $cortexto?>">
 
 
