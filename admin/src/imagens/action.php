@@ -23,7 +23,7 @@ switch ($_GET['act']) {
 		$delUsu = mysql_query($sql);
 		
 		if ($delUsu) {
-			@unlink($_CONFIG['site_path'] ."/galerias/". $regImg['gal_pasta'] ."/". $regImg['img_nome_arquivo']);
+			@unlink("../galerias/". $regImg['gal_pasta'] ."/". $regImg['img_nome_arquivo']);
 			
 			$success = true;
 		} else {

@@ -48,11 +48,11 @@ if (isset($_FILES['photoupload'])) {
 		$error = 'Envie apenas imagens! Outros formatos não são permitidos!';
 	}
 	
-	if (!$error && @file_exists($_CONFIG['site_path'] .'/galerias/'. $gal_pasta .'/'. $arquivo_nome)) {
+	if (!$error && @file_exists('../galerias/'. $gal_pasta .'/'. $arquivo_nome)) {
 		$error = 'Já existe uma imagem com este nome nesta galeria';
 	}
 	
-	if(!$error && !@copy($arquivo, $_CONFIG['site_path'] .'/galerias/'. $gal_pasta .'/'. $arquivo_nome)) {
+	if(!$error && !@copy($arquivo, '../galerias/'. $gal_pasta .'/'. $arquivo_nome)) {
 		$error = 'Imagem não pode ser enviada';
 	}
 	

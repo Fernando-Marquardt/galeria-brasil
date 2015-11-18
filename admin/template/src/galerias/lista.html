@@ -35,7 +35,7 @@ function deletar(id) {
 	{if $smarty.foreach.galerias.last}
 	</tr>
 	{/if}
-	{if !$smarty.foreach.galerias.iteration % 3}
+	{if !($smarty.foreach.galerias.iteration % 3)}
 	</tr>
 	<tr>
 	{/if}

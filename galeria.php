@@ -74,7 +74,7 @@ $numImgTotal = mysql_num_rows($resImgTotal);
 /**
  * Paginação
  */
-$page = new Pagination($numImgTotal, $_GET['pg'], 10);
+$page = new Pagination($numImgTotal, $_GET['pg'], 8);
 
 $pag_template['main'] = "{main.first} {main.previous} {main.number} {main.next} {main.last}";
 $pag_template['number'] = ' <a href="?gal='. $gal_codigo .'&pg={number.page}">{number.page}</a> ';

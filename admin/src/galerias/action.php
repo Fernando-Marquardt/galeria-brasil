@@ -50,7 +50,7 @@ switch ($_GET['act']) {
 		$resGal = mysql_query($sql);
 		$regGal = mysql_fetch_assoc($resGal);
 		
-		$possui_imagens = (deletar_pasta($_CONFIG['site_path'] .'/galerias/'. $regGal['gal_pasta'])) ? false : true;
+		$possui_imagens = (deletar_pasta('../galerias/'. $regGal['gal_pasta'])) ? false : true;
 		
 		$sql = "DELETE FROM galerias WHERE gal_codigo = ". $gal_codigo;
 		$delGal = mysql_query($sql);

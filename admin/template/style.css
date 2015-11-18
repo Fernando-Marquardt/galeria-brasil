@@ -103,7 +103,7 @@ p {
 }
 
 #submenu ul li {
-	display: inline-block;
+	display: inline;
 	margin-right: 5px;
 }
 

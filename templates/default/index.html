@@ -19,7 +19,7 @@
 		<tr>
 		{/if}
 			<td>
-				<a href="#{$galeria.gal_codigo}" onclick="System.window.open('galeria.php?gal={$galeria.gal_codigo}', {literal}{width: 680, height: 450, name: 'Galeria', scrollbars: 'yes', resizable: 'no', position: {x: 'center', y: 'middle'}}{/literal});">
+				<a href="#{$galeria.gal_codigo}" onclick="System.window.open('galeria.php?gal={$galeria.gal_codigo}', {literal}{width: 680, height: 470, name: 'Galeria', scrollbars: 'yes', resizable: 'no', position: {x: 'center', y: 'middle'}}{/literal});">
 					<img src="imagem.php?gal={$galeria.gal_pasta}&img={$galeria.img_nome_arquivo}&thumb=2" alt="{$galeria.gal_titulo}" title="{$galeria.gal_titulo}" />
 					<br />{$galeria.gal_local} - <strong>{$galeria.total_imagens} fotos</strong>
 					<br />{$galeria.gal_data}
@@ -28,7 +28,7 @@
 		{if $smarty.foreach.galerias.last}
 		</tr>
 		{/if}
-		{if !$smarty.foreach.galerias.iteration % 3}
+		{if !($smarty.foreach.galerias.iteration % 3)}
 		</tr>
 		<tr>
 		{/if}

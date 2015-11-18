@@ -6,7 +6,8 @@
 			Fernando Marquardt <fernando.marquardt@gmail.com>
 			
 	Você pode tirar suas dúvidas no fórum do site do projeto, que você encontra no
-	endereço http://sourceforge.net/forum/forum.php?forum_id=760903
+	endereço http://sourceforge.net/forum/forum.php?forum_id=760903 ou pelo fórum
+	http://www.equipelider.com.br/galeriabrasil/
 	
 =====================================================================================
 									REQUISITOS
@@ -53,5 +54,5 @@
 		Exemplo: http://www.seusite.com.br/galeria/instalar
 		
 	5º 	Terminada a instalação altere as permissões do arquivo core/inc.config.php
-		para leitura (CHMOD 0666 no Linux) e remova a pasta instalar/ do seu 
+		para Somente Leitura (CHMOD 0444 no Linux) e remova a pasta instalar/ do seu 
 		servidor.
