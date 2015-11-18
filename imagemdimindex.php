@@ -8,7 +8,7 @@
     $largurad = ($largurao*$alturad)/$alturao;
 
 	$nova     = imagecreatetruecolor($largurad,$alturad);
-	imagecopyresized($nova,$im,0,0,0,0,$largurad,$alturad,$largurao,$alturao);
+	imagecopyresampled($nova,$im,0,0,0,0,$largurad,$alturad,$largurao,$alturao);
     imagejpeg($nova);
     imagedestroy($nova);
 	imagedestroy($im);

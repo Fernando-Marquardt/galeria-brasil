@@ -1,4 +1,4 @@
-<? include("menu.php");?>
+<? include ("verifica.php");include("menu.php");?>
 <?
 $url = "$caminho/$nomedoarquivo";
 unlink("$url");

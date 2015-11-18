@@ -1,9 +1,9 @@
-<? include("menu.php");?>
+<?include_once ("verifica.php"); include("menu.php");?>
 
 <?
 mkdir("galeria/$nomedapasta", 0777);
 ?>
-<meta http-equiv="refresh" content="2;URL=../admin/cadastrar.php?nivel=">
+<meta http-equiv="refresh" content="2;URL=listar_arquivos.php">
 <center><br>
 <br>
 <br>

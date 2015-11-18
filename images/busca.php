@@ -1,4 +1,4 @@
-<? include("menu.php");?><br>
+<? include_once ("verifica.php");include("menu.php");?><br>
 <br>
 <table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
  <tr>

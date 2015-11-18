@@ -1,4 +1,4 @@
-<? include("menu.php");?>
+<? include ("verifica.php");include("menu.php");?>
 <br>
 <center>
  <font size="1" face="Verdana, Tahoma, MS Sans Serif"><strong>RENOMEAR ARQUIVO</strong></font> 

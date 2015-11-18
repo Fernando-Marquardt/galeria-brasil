@@ -1,6 +1,6 @@
 function AbreJanelaGaleria(URL) {
-  var width = 700;
-  var height = 450;
+  var width = 625;
+  var height = 395;
   var left = 50;
   var top = 10
   window.open(URL, 'ema3', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
@@ -11,7 +11,7 @@ function popup(url) {
 }
 
 function imprimi(url) {
-  window.open(url,'popupImageWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=370,height=500,screenX=150,screenY=150,top=150,left=150')
+  window.open(url,'popupImageWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150')
 }
 
 function indica(url) {

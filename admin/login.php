@@ -1,4 +1,5 @@
 <?
+include ("../register_global.php");
 include("path.php");
 
 $query = mysql_query("Select * From users where login='$login_' and senha='$senha_'");
@@ -30,12 +31,12 @@ return (true);
 </script>
 <form action="login.php?nivel=<? echo $nivel?>" method="post" onsubmit="return validate(this);">
   <table width="300" border="0" align="center" cellpadding="0" cellspacing="2">
-    <tr valign="top"> 
-      <td height="45" colspan="3" align="center"><strong><font size="<? echo $ttitulo?>" face="<? echo $fonte?>">Sistema 
+    <tr valign="top">
+      <td height="45" colspan="3" align="center"><strong><font size="<? echo $ttitulo?>" face="<? echo $fonte?>">Sistema
         de Login</font></strong></td>
     </tr>
 </table>
-  
+
 <table border="0" align="center" cellpadding="0" cellspacing="3">
     <tr>
       <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Login:</font></td>
@@ -50,9 +51,10 @@ return (true);
 </HTML>
 <?
 } elseif($login_ == $user && $senha_ == $pass){
-setcookie("usuario", $login_);
-setcookie("senha", $senha_);
-header("Location: administrar.php?nivel=$nivel");
+setcookie("usuario", $login_,0,"/");
+setcookie("senha", $senha_,0,"/");
+setcookie("nivel",$nivel,0,"/");
+header("Location: administrar.php");
 } elseif($login_ != $valida["login"] || $senha_ != $valida["senha"]){
 ?>
 <? include("../include/config.php");?>
@@ -75,7 +77,7 @@ return (true);
 </script>
 <form action="login.php" method="post" onsubmit="return validate(this);">
   <table width="300" border="0" align="center" cellpadding="0" cellspacing="2">
-    <tr valign="top"> 
+    <tr valign="top">
       <td height="45" colspan="3" align="center"><font size="<? echo $ttitulo?>" face="<? echo $fonte?>"><font color="#FF0000"><strong>Usuário ou Senha Inválidos</strong></font>
 	  <br><font size="1">Por favor tente novamente!</font>
 </font></td>

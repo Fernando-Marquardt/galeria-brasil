@@ -1,4 +1,4 @@
-<? include("menu.php");?>
+<?include ("verifica.php"); include("menu.php");?>
 <?
 rename("$nomeantigo", "$nomedapasta");
 ?>

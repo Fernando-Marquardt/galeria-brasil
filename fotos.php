@@ -1,4 +1,5 @@
 <?
+ini_set("register_globals","1");
 if (strstr($pg,".")== TRUE){
 $pg=ceil($pg);
 $pg=$pg-1;
@@ -11,9 +12,9 @@ $cont=0;
 }
 ?>
 <? include("path.php");?>
-<body bgcolor="#FF00FF">
-<table border="0" cellpadding="0" cellspacing="0">
-  <tr>
+
+<table cellpadding="0" cellspacing="0" border="0">
+ <tr>
      
    <td width="230" height="240" valign="top"> 
      <?
@@ -58,18 +59,18 @@ if($imagens[$i] != ""){ ?>
          <td width="70" valign="top"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><strong> 
            <? $total = ceil(count($imagens)); echo $total; ?>
            </strong> Fotos.</font></td>
-          <td align="right" valign="top"> <div align="right"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>">P&Aacute;G: 
-              <?
+         <td align="right" valign="top"> <font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><strong>Pgs:</strong> | 
+      <?
 for($i=0; $i<$paginas; $i++){
 $url = "?dir=$dir&pg=$i";
   if ($i==$pg) {
-  echo " <b>".($i+1)."</b> ";
+  echo " <b>".($i+1)."</b> |";
   } else {
-  echo " <a href='$url'>".($i+1)."</a> ";
+  echo " <a href='$url'>".($i+1)."</a> |";
   }
 } 
 ?>
-              </font> </div></td>
+</font> </td>
 </tr>
 </table>
 </td>

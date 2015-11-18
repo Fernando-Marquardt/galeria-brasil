@@ -1,4 +1,6 @@
-<? include("../admin/menu.php")?>
+<? 
+include ("verifica.php");
+include("../admin/menu.php")?>
 
  <table width="400" align="center" cellpadding="0" cellspacing="0">
    <TR>

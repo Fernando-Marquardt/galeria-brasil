@@ -1,9 +1,9 @@
-<? include("menu.php");?>
+<?include ("verifica.php"); include("menu.php");?>
 <?
 if($caminho != ""){
-rmdir ("galeria/$nomedapasta");
+rmdir ("$caminho/$nomedapasta");
 } else {
-rmdir ("galeria/$nomedapasta");
+rmdir ("$nomedapasta");
 }
 ?>
 <meta http-equiv="refresh" content="2;URL=listar_arquivos.php">

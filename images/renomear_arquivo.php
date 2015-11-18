@@ -1,7 +1,7 @@
-<? include("menu.php");?>
+<?include ("verifica.php"); include("menu.php");?>
 <?
-$var1 = "$nomeantigo";
-$var2 = "$nomenovo";
+$var1 = "$caminho/$nomeantigo";
+$var2 = "$caminho/$nomenovo";
 rename("$var1", "$var2");
 ?>
 <meta http-equiv="refresh" content="2;URL=listar_arquivos.php?caminho=<? echo $caminho?>">

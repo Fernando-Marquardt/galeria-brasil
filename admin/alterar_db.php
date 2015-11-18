@@ -56,8 +56,8 @@ rename("$var1", "$var2");
 }
 
 // aqui executa o upload da foto
-//if (copy($foto01,"../images/galeria/$pastanova/".$foto01_name)){}
-//else{ echo "<div align='center'><font color=\"#FF0000\" size='1' face='Verdana, tahoma'><b>Erro no enviar a foto!</b></font></div><BR>";}
+if (copy($foto01,"../images/galeria/$pastanova/".$foto01_name)){}
+else{ echo "<div align='center'><font color=\"#FF0000\" size='1' face='Verdana, tahoma'><b>Erro no enviar a foto!</b></font></div><BR>";}
 
 $sql = mysql_query("UPDATE galeria SET nome='$nome', dia='$dia', mes='$mes', ano='$ano', local='$local', pasta='$pastanova', foto01='$foto01_name' WHERE id='$id'");
 ?>

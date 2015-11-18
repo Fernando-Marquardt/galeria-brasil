@@ -1,5 +1,5 @@
 <? 
-$versao = "v1.0";
+$versao = "v2.0";
 
 if($passo == ""){?>
 <script Language="JavaScript">
@@ -25,7 +25,7 @@ if (form1.user.value == "")
       <table width="500" border="0" cellspacing="0" cellpadding="1" align="center">
         <tr bgcolor="#400080">
           <td height="20" class="td1" bgcolor="#000084"><b><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
-            &nbsp;Galeria <? echo $versao; ?> - Instalação</font></b></td>
+            &nbsp;Galeria Brasil <? echo $versao; ?> - Instalação</font></b></td>
         </tr>
         <tr>
           <td colspan="2">
@@ -162,7 +162,7 @@ return (true);
       <table width="500" border="0" cellspacing="0" cellpadding="1" align="center">
         <tr bgcolor="#400080">
           <td height="20" class="td1" bgcolor="#000084"><b><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif">
-            &nbsp;Galeria <? echo $versao; ?> - Instalação</font></b></td>
+            &nbsp;Galeria Brasil <? echo $versao; ?> - Instalação</font></b></td>
         </tr>
         <tr>
           <td colspan="2">
@@ -341,34 +341,16 @@ $sql = mysql_query ("CREATE TABLE galeria (
   local varchar(255) NOT NULL default '',
   pasta varchar(255) NOT NULL default '',
   foto01 varchar(255) NOT NULL default '',
-  clicks varchar(9) NOT NULL default '',
   PRIMARY KEY  (id)
 );");
-
-$sql = mysql_query ("CREATE TABLE calendario (
-  id tinyint(4) NOT NULL auto_increment,
-  dia varchar(50) NOT NULL default '',
-  mes varchar(50) NOT NULL default '',
-  ano varchar(50) NOT NULL default '',
-  dados varchar(200) NOT NULL default '',
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=12 ;");
-
-$sql = mysql_query ("CREATE TABLE mensagemfoto (
-  post int(11) NOT NULL auto_increment,
-  nome varchar(255) NOT NULL default '',
-  pagina varchar(50) NOT NULL default '',
-  comentario varchar(150) NOT NULL default '',
-  data varchar(10) NOT NULL default '',
-  hora varchar(10) NOT NULL default '',
-  PRIMARY KEY  (`post`),
-  KEY `post` (`post`)
-) TYPE=MyISAM PACK_KEYS=0 AUTO_INCREMENT=9 ;");
 
 $sql = mysql_query("Insert into users values('1', '$admin', '$admine', '$adminl', '$admins', '1')");
 $sql = mysql_query("Insert into config values('1','$tsite', '$usite', '$fonte', '$tfonte', '$ttitulo', '$coronmouse', '$cortexto', '$corcelula1', '$corcelula2', '$corfundosite')");
 
-
+// inicia criação de pasta
+$nomedapasta = "galeria";
+@mkdir("images/$nomedapasta", 0777);
+// fim da criação da pasta
 ?>
 <table border="1" cellspacing="0" cellpadding="0" align="center" width="500">
   <tr bgcolor="#C6C3C6">
@@ -376,7 +358,7 @@ $sql = mysql_query("Insert into config values('1','$tsite', '$usite', '$fonte', 
       <table width="500" border="0" cellspacing="0" cellpadding="1" align="center">
         <tr bgcolor="#400080">
           <td height="20" class="td1" bgcolor="#000084"><b><font color="#FFFFFF" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
-            &nbsp;Galeria <? echo $versao; ?> - Instalação!</font></b></td>
+            &nbsp;Galeria Brasil <? echo $versao; ?> - Instalação!</font></b></td>
         </tr>
         <tr align="center">
           <td colspan="2"><br>

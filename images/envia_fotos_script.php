@@ -1,4 +1,4 @@
-<? include("../admin/menu.php")?>
+<? include_once ("verifica.php");include("menu.php")?>
 <? $url = "galeria/$nomedapasta/";?>
 <center>
   <font color="<? echo $cortexto?>" size='<? echo $tfonte?>' face='<? echo $fonte?>'><b> 

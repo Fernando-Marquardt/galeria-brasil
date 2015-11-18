@@ -30,7 +30,7 @@ $total = mysql_num_rows($sql);
   </TR>
   <TR bgcolor="<? echo $corcelula2?>"> 
     <TD height="15" align="center"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><? echo $dados[id]?></font></td>
-    <TD align="left"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="javascript:AbreJanelaGaleria('../janela.php?dir=images/<? echo "$dados[pasta]/&id=$dados[id]&evento=$dados[nome]&data=$dados[dia]/$dados[mes]/$dados[ano]&local=$dados[local]&id=$dados[id]";?>')"><? echo $dados[nome]?></a></font></TD>
+    <TD align="left"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="javascript:AbreJanelaGaleria('../janela.php?dir=images/galeria/<? echo "$dados[pasta]/&id=$dados[id]&evento=$dados[nome]&data=$dados[dia]/$dados[mes]/$dados[ano]&local=$dados[local]&id=$dados[id]";?>')"><? echo $dados[nome]?></a></font></TD>
     <TD align="center"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="alterar.php?id=<? echo $dados[id]?>&nivel=<? echo $nivel?>">Alterar</a></font></TD>
     <TD align="center"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><a href="excluir_db.php?id=<? echo $dados[id]?>&pasta=<? echo $dados[pasta]?>&nivel=<? echo $nivel?>">Excluir</a></font></TD>
   </tr>

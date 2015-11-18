@@ -1,4 +1,4 @@
-<? include("../admin/menu.php")?>
+<? include_once ("verifica.php");include("../admin/menu.php")?>
 <form action="envia_fotos_script.php?nivel=<? echo $nivel?>&usuario=<? echo $usuario?>" method="post" enctype="multipart/form-data">
 <input name="nomedapasta" type="hidden" value="<? echo $nomedapasta?>">
  <table width="400" align="center" cellpadding="0" cellspacing="0">

@@ -1,4 +1,5 @@
 <?
+include_once("register_global.php");
 $sql = mysql_query("SELECT * FROM config");
 while ($linha = mysql_fetch_array($sql)) {
 $tsite = $linha["tsite"]; 				// nome do site
@@ -16,7 +17,7 @@ $versao = "v2.0";
 ?>
 <html>
 <head>
-<title>Galeria de Fotos</title>
+<title><? echo $tsite;?> - Galeria Brasil <? echo $versao?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">     A    {text-decoration: none}</style>
 <style fprolloverstyle>A:hover {color: <? echo $coronmouse;?>; text-decoration: underline}</style>
