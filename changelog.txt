@@ -1,23 +1,27 @@
-Ôªø========== Vers√£o 2.3.6 ===========
+========== Vers„o 2.4.0 ===========
 
-[fixed] Erro na cria√ß√£o de uma nova galeria quando n√£o era cadastrada uma imagem de capa
-[fixed] Quantidade de imagens apresentadas por p√°gina na visualiza√ß√£o da galeria
+[improved] AdministraÁ„o foi remodelada como novo layout e v·rias mudanÁas em cÛdigo
 
-========== Vers√£o 2.3.5 ===========
+========== Vers„o 2.3.6 ===========
 
-[fixed] Um erro que ocorria quando a galeria n√£o possuia foto de capa, ao abrir o popup da galeria
+[fixed] Erro na criaÁ„o de uma nova galeria quando n„o era cadastrada uma imagem de capa
+[fixed] Quantidade de imagens apresentadas por p·gina na visualizaÁ„o da galeria
 
-========== Vers√£o 2.3.4 ===========
+========== Vers„o 2.3.5 ===========
 
-[added] Possibilidade de inibir as fun√ß√µes de Imprimir e Enviar por E-Mail
-[added] Possibilidade de escolher forma de envio do E-Mail de indica√ß√£o, tendo como escolha via mail() ou mailto
+[fixed] Um erro que ocorria quando a galeria n„o possuia foto de capa, ao abrir o popup da galeria
 
-[fixed] Arrumado o problema com a pagina√ß√£o na galeria
-[fixed] Corrigido o problema com o Globals Off durante a instala√ß√£o
+========== Vers„o 2.3.4 ===========
 
-[improved] Agora a galeria est√° 100% compat√≠vel com Globals Off
-[improved] Parte do c√≥digo foi revisado e agora est√° mais leg√≠vel
+[added] Possibilidade de inibir as funÁıes de Imprimir e Enviar por E-Mail
+[added] Possibilidade de escolher forma de envio do E-Mail de indicaÁ„o, tendo como escolha via mail() ou mailto
 
-[changed] Modificada a forma de pagina√ß√£o para utilizar Combo Box
-[changed] Alterada a janela das fotos, na forma de visualiza√ß√£o e tratamento dos dados
-[changed] Tratamento dos dados foi alterado, n√£o s√£o mais passados todos os dados da galeria atrav√©s da QueryString
+[fixed] Arrumado o problema com a paginaÁ„o na galeria
+[fixed] Corrigido o problema com o Globals Off durante a instalaÁ„o
+
+[improved] Agora a galeria est· 100% compatÌvel com Globals Off
+[improved] Parte do cÛdigo foi revisado e agora est· mais legÌvel
+
+[changed] Modificada a forma de paginaÁ„o para utilizar Combo Box
+[changed] Alterada a janela das fotos, na forma de visualizaÁ„o e tratamento dos dados
+[changed] Tratamento dos dados foi alterado, n„o s„o mais passados todos os dados da galeria atravÈs da QueryString

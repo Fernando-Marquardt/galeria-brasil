@@ -1,74 +1,56 @@
-<? include("verifica.php")?>
-<? include("menu.php")?>
+<?php
+if (!defined('IN_SYS')) die();
 
-<center>
-<?
-// verifica se o campo foto_antiga preenchido
-if($_POST['nova_foto'] == "nao"){
+$falhaFoto = false;
 
-// função renomeia pasta
-if($_POST['pastanova'] != $_POST['pastaantiga']){
-$var1 = "../images/galeria/". $_POST['pastaantiga'];
-$var2 = "../images/galeria/". $_POST['pastanova'];
-rename($var1, $var2);
+$query = db_query('SELECT * FROM galeria WHERE id_galeria = ' . $_GET['id']);
+$galeria = db_result($query);
+
+// Verifica se é necessário renomear a pasta
+if ($_POST['diretorio'] != $galeria['diretorio']) {
+    $diretorio = $_POST['diretorio'];
+    $diretorioOriginal = "../galerias/{$galeria['diretorio']}";
+    $diretorioNovo = "../galerias/{$_POST['diretorio']}";
+    
+    rename($diretorioOriginal, $diretorioNovo);
+} else {
+    $diretorio = $galeria['diretorio'];
 }
-$sql = mysql_query("UPDATE galeria SET nome='". $_POST['nome' ] ."', dia='". $_POST['dia'] ."', mes='". $_POST['mes'] ."', ano='". $_POST['ano'] ."', local='". $_POST['local'] ."', pasta='". $_POST['pastanova'] ."', foto01='". $_POST['foto_antiga'] ."' WHERE id='". $_GET['id'] ."'");
+
+switch ($_POST['nova_foto']) {
+    case 'nao':
+        $capa = $galeria['capa'];
+        break;
+    case 'nada':
+        $capa = '';
+        break;
+    case 'sim':
+        $capa = $_FILES['capa']['name'];
+        
+        if (!copy($_FILES['capa']['tmp_name'], "../galerias/{$diretorio}/{$capa}")) {
+            $falhaFoto = true;
+        }
+        
+        break;
+}
+
+$titulo = $_POST['titulo'];
+$data = $_POST['ano'] . '-' . $_POST['mes'] . '-' . $_POST['dia'];
+$local = $_POST['local'];
+
+$sql = "UPDATE galeria SET 
+    titulo = '{$titulo}', data = '{$data}', local = '{$local}', diretorio = '{$diretorio}', capa = '{$capa}'
+    WHERE id_galeria = {$_GET['id']}";
+$update = db_query($sql);
 ?>
-<font color="<? echo $cortexto?>" size='<? echo $ttitulo?>' face='<? echo $fonte?>'><b>Galeria alterada com sucesso!</b></font><font color="<? echo $cortexto?>"><BR><br>
-  <font face='<? echo $fonte?>' size='<? echo $tfonte?>'><a href='listar_galerias.php?nivel=<? echo $nivel?>'>Clique 
-  aqui para Voltar</a></font></font>
- 
-<br>
+<?php if ($update): ?>
+<div class="success">Galeria alterada com sucesso!</div>
+<?php else: ?>
+<div class="error">Não foi possível alterar a galeria.</div>
+<?php endif; ?>
 
-<?
-}
-// verifica se o campo foto_antiga preenchido
-elseif($_POST['nova_foto'] == "nada"){
+<?php if ($falhaFoto): ?>
+<div class="error">Ocorreu um falha e a foto de capa não pode ser enviada.</div>
+<?php endif; ?>
 
-// função renomeia pasta
-if($_POST['pastanova'] != $_POST['pastaantiga']){
-$var1 = "../images/galeria/". $_POST['pastaantiga'];
-$var2 = "../images/galeria/". $_POST['pastanova'];
-rename($var1, $var2);
-}
-
-$sql = mysql_query("UPDATE galeria SET nome='". $_POST['nome'] ."', dia='". $_POST['dia'] ."', mes='". $_POST['mes'] ."', ano='". $_POST['ano'] ."', local='". $_POST['local'] ."', pasta='". $_POST['pastanova'] ."', foto01='' WHERE id='". $_GET['id'] ."'");
-?>
-<font face='<? echo $fonte?>' size='<? echo $ttitulo?>'><b><font color="<? echo $cortexto?>">Galeria 
-  alterada com sucesso!</font></b></font><font color="<? echo $cortexto?>"><BR>
-  <br>
-  <font face='<? echo $fonte?>' size='<? echo $tfonte?>'><a href='listar_galerias.php?nivel=<? echo $nivel?>'>Clique 
-  aqui para Voltar</a></font></font>
-
-<br>
-
-<?
-}
-
-// verifica se os campos foto_antiga e foto01 estão preenchidos
-else {
-
-// função renomeia pasta
-if($_POST['pastanova'] != $_POST['pastaantiga']){
-$var1 = "../images/galeria/". $_POST['pastaantiga'];
-$var2 = "../images/galeria/". $_POST['pastanova'];
-rename($var1, $var2);
-}
-
-// aqui executa o upload da foto
-if (!copy($_FILES['foto01']['tmp_name'],"../images/galeria/". $_POST['pastanova'] ."/". $_FILES['foto01']['name'])){
-	echo "<div align='center'><font color=\"#FF0000\" size='1' face='Verdana, tahoma'><b>Erro no enviar a foto!</b></font></div><BR>";
-}
-
-$sql = mysql_query("UPDATE galeria SET nome='". $_POST['nome'] ."', dia='". $_POST['dia'] ."', mes='". $_POST['mes'] ."', ano='". $_POST['ano'] ."', local='". $_POST['local'] ."', pasta='". $_POST['pastanova'] ."', foto01='". $_FILES['foto01']['name'] ."' WHERE id='". $_GET['id'] ."'") or die(mysql_error());
-?>
-<font face='<? echo $fonte?>' size='<? echo $ttitulo?>'><b><font color="<? echo $cortexto?>">Galeria 
-  alterada com sucesso!</font></b></font><font color="<? echo $cortexto?>"><BR>
-  <br>
-  <font face='<? echo $fonte?>' size='<? echo $tfonte?>'><a href='listar_galerias.php?nivel=<? echo $nivel?>'>Clique 
-  aqui para Voltar</a></font></font>
-
-<br>
-
-<? }?>
-</center>
+<center><a href="?p=galerias">Voltar para as galerias</a></center>

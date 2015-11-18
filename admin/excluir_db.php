@@ -1,19 +1,25 @@
-<? include("verifica.php")?>
-<? include("menu.php")?>
+<?php
+if (!defined('IN_SYS')) die();
 
-<?
-$sql = mysql_query("delete from galeria where id='". $_GET['id'] ."'");
+$galeria = db_result(db_query("SELECT * FROM galeria WHERE id_galeria = {$_GET['id']}"));
+$remove = db_query("DELETE FROM galeria WHERE id_galeria = {$_GET['id']}");
 
-$dir = "../images/galeria/". $_GET['pasta'];
-$dir1=opendir($dir);
-while ($res=readdir($dir1)){
-if ($res!='' && $res!='.' && $res!='..'){
-$url = $dir ."/". $res;
-@unlink($url);
-}}
-@rmdir ($dir);
+$dirName = "../galerias/". $galeria['diretorio'];
+$dir = opendir($dirName);
+
+while ($res = readdir($dir)){
+    if ($res != '' && $res != '.' && $res != '..'){
+        $url = "{$dirName}/{$res}";
+        unlink($url);
+    }
+}
+
+rmdir ($dirName);
 ?>
-<meta http-equiv="refresh" content="1;URL=listar_galerias.php?nivel=<? echo $nivel?>">
-<center>
-  <font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><b>Galeria excluída com sucesso!</b> </font><BR><br><font face='<? echo $fonte?>' size='<? echo $tfonte?>'><a href='listar_galerias.php?nivel=<? echo $nivel?>'>Clique aqui para Voltar</a></font>
-</center>
+<?php if ($remove): ?>
+<div class="success">Galeria excluída com sucesso!</div>
+<?php else: ?>
+<div class="error">Não foi possível excluir a galeria.</div>
+<?php endif; ?>
+
+<center><a href="?p=galerias">Voltar para as galerias</a></center>

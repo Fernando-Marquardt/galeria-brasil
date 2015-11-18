@@ -1,5 +1,5 @@
 ============================================================================================================================
-   Galeria Brasil v2.3.6 - http://www.sourceforge.net/projects/galeriabrasil
+   Galeria Brasil v2.4.0 - http://www.sourceforge.net/projects/galeriabrasil
 ============================================================================================================================
    Desenvolvido por: 
 	Sandro Porto <thiago@pegasusvideo.com.br>
@@ -7,7 +7,8 @@
 	Fernando Marquardt <fernando.marquardt@gmail.com>
 ============================================================================================================================
    Dúvidas e Sugestões:
-	http://forum.wmonline.com.br/index.php?showtopic=34335  
+	http://forum.wmonline.com.br/topic/34335-sistema-de-fotos-igual-ao-do-www-bemnafoto-com-br/
+        http://forum.wmonline.com.br/topic/202426-galeria-brasil/
 	http://www.sourceforge.net/projects/galeriabrasil
 
 ============================================================================================================================
@@ -27,9 +28,7 @@ Como Instalar:
 
   - Caso o seu servidor seja Linux mude a permissão das pastas e arquivos listados abaixo para 0777
     Pastas:
-      - images 
-    Arquivos:
-      - conexao.php (dentro da pasta include)
+      - galerias
 
   - Execute o arquivo instalar.php sua galeria, após executá-lo se não ocorrer nenhum erro apague o mesmo.
 
@@ -41,10 +40,10 @@ Como Instalar:
 
 Dúvidas Frequentes:
   - Quando você entrar no index.php da galeria não aparecer nada, por que?
-      R: Provavelmente é por que vc ainda não cadastrou nenhuma galeria.
+      R: É possível que nenhum galeria esteja cadastrada ainda.
 
   - No meu site não aparece as imagens pequenas ou thumbs, por que?
-      R: Não aparece as imagens pequenas por que ser servidor não tem suporte a biblioteca GD peça a eles que a instalem 
+      R: Não aparece as imagens pequenas por que seu servidor não tem suporte a biblioteca GD peça a eles que a instalem 
 
   - Quando você Cadastrar uma galeria irá abrir uma pagina para enviar as fotos, você poderá enviar até 20 fotos por vez,
     ou você pode enviar todas as fotos via ftp para a pasta correspondente da galeria.

@@ -1,12 +1,12 @@
 <?php
-include("path.php");
+require_once 'core/inc.comum.php';
 
 $id = $_GET['id'];
 
-$sql = "SELECT *, nome AS evento, CONCAT_WS('/', dia, mes, ano) AS data FROM galeria WHERE id = ". $_GET['id'];
-$query = mysql_query($sql);
+$sql = "SELECT *, DATE_FORMAT(data, '%d/%m/%Y') AS data FROM galeria WHERE id_galeria = ". $id;
+$query = db_query($sql);
 
-$rs = mysql_fetch_array($query);
+$rs = db_result($query);
 ?>
 
 <script language="javascript"><!--
@@ -17,14 +17,18 @@ function resize() {
 }
 //--></script>
 </head>
-<body onload="resize();javascritp:print();">
+<body onload="resize(); print();">
 <table border="0" align="center" cellpadding="1" cellspacing="0">
-  <tr>
-    <td align="left" colspan="2"><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>"><strong><span style="text-transform: uppercase"><font size="<? echo $ttitulo?>"><? echo $rs['evento'];?></font></span></strong><br>
-     <? echo $rs['data'];?>  -  <? echo $rs['local'];?></font><br> 
-     <HR width="100%" size="1" noshade color="<? echo $cortexto?>"></td>
- </tr>
-  <tr>
-    <td align="left" colspan="2"><img src='<? echo $_GET['imagem'];?>' border="1"></td>
-  </tr>
+    <tr>
+        <td align="left" colspan="2">
+            <strong><span style="text-transform: uppercase"><?php echo $rs['titulo'];?></span></strong>
+            <br /><?php echo $rs['data'] . ' - ' . $rs['local'];?>
+            <br /><hr width="100%" size="1" noshade="noshade" />
+        </td>
+    </tr>
+    <tr>
+        <td align="left" colspan="2">
+            <img src='<?php echo $_GET['imagem'];?>' border="1" />
+        </td>
+    </tr>
 </table>

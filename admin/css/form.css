@@ -1,0 +1,51 @@
+input[type="text"], input[type="password"] {
+    box-shadow: inset 0px 3px 5px rgba(0,0,0,.15);
+    -webkit-box-shadow: inset 0px 3px 5px rgba(0,0,0,.15);
+    -moz-box-shadow: inset 0px 3px 5px rgba(0,0,0,.15);
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #369;
+}
+
+button, input[type="submit"], input[type="button"], input[type="reset"] {
+    background: #390;
+    background: -moz-linear-gradient(top, #390, #360);
+    background: -webkit-gradient(linear, left top, left bottom, from(#390), to(#360));
+    border: 0;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    color: #fff;
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+input[type="reset"], button[type="reset"] {
+    background: #930;
+    background: -moz-linear-gradient(top, #930, #620);
+    background: -webkit-gradient(linear, left top, left bottom, from(#930), to(#620));
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover {
+    background: #369;
+    background: -moz-linear-gradient(top, #369, #285078);
+    background: -webkit-gradient(linear, left top, left bottom, from(#369), to(#285078));
+    cursor: pointer;
+}
+
+label {
+    text-shadow: 2px 2px 2px #ccc;
+}
+
+.form-field label {
+    display: block;
+    float: left;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0.5em 0;
+    margin-right: 10px;
+    text-align: right;
+    width: 180px;
+}

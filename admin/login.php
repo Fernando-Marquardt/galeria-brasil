@@ -1,97 +1,86 @@
-<?
-include("path.php");
+<?php
+require_once '../core/inc.comum.php';
+require_once BASEPATH . '/core/inc.login.php';
 
-$query = mysql_query("Select * From users where login='". $_POST['login_'] ."' and senha='". $_POST['senha_'] ."'");
-$valida = mysql_fetch_array($query);
+$loginFalhou = false;
+$logout = false;
 
-$user = $valida["login"];
-$pass = $valida["senha"];
-$nivel = $valida["nivel"];
+if (isset($_GET['logout'])) {
+    $logout = true;
+    
+    deslogar();
+}
 
-if($_POST['login_'] == '' || $_POST['senha_'] == ''){
+if (!empty($_POST['login'])) {
+    $login = anti_injection($_POST['login']);
+    $senha = md5($_POST['senha']);
+    
+    $query = mysql_query("SELECT * FROM usuario WHERE login = '{$login}' AND senha = '{$senha}'");
+    
+    if ($query) {
+        $usuario = mysql_fetch_assoc($query);
+        
+        if ($usuario['login'] === $login && $usuario['senha'] === $senha) {
+            logar($usuario);
+            
+            header('Location: index.php');
+        } else {
+            $loginFalhou = true;
+        }
+    } else {
+        $loginFalhou = true;
+    }
+}
 ?>
-<? include("../include/config.php");?>
-<HTML>
-<title><? echo $tsite?></title>
-<Script Language="JavaScript">
-function validate(form1) {
-if (form1.login_.value == "")
-{ alert("O Campo Login é obrigatório!");
-   form1.login_.focus();
-return (false);
-}
-if (form1.senha_.value == "")
-{ alert("O Campo Senha é obrigatório!");
-   form1.senha_.focus();
-   return (false);
-}
-return (true);
-}
-</script>
-<form action="login.php?nivel=<? echo $nivel?>" method="post" onsubmit="return validate(this);">
-  <table width="300" border="0" align="center" cellpadding="0" cellspacing="2">
-    <tr valign="top">
-      <td height="45" colspan="3" align="center"><strong><font size="<? echo $ttitulo?>" face="<? echo $fonte?>">Sistema
-        de Login</font></strong></td>
-    </tr>
-</table>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    
+    <link type="text/css" rel="stylesheet" href="css/screen.css" media="screen, projection" />
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print" />
+    <!--[if lt IE 8]>
+    <link type="text/css" rel="stylesheet" href="css/ie.css" media="screen, projection">
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="css/form.css" media="screen, projection" />
+    <link type="text/css" rel="stylesheet" href="css/login.css" media="screen, projection" />
+    
+    <title><?php echo $config['titulo']; ?> - Login </title>
+</head>
+<body>
+    <div class="login-painel">
+        <div class="login-titulo">
+            Área Restrita
+        </div>
 
-<table border="0" align="center" cellpadding="0" cellspacing="3">
-    <tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Login:</font></td>
-      <td colspan="2"><input name="login_" type="text" size="25"></td></tr>
-<tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Senha:</font></td>
-      <td><input name="senha_" type="password" size="15"></td>
-	  <td><input name="logar" type="submit" value="Logar"></td>
-	  </tr>
-</table>
-</form>
-</HTML>
-<?
-} elseif($_POST['login_'] == $user && $_POST['senha_'] == $pass){
-setcookie("usuario", $_POST['login_'],0,"/");
-setcookie("senha", $_POST['senha_'],0,"/");
-setcookie("nivel",$nivel,0,"/");
-header("Location: administrar.php");
-} elseif($_POST['login_'] != $valida["login"] || $_POST['senha_'] != $valida["senha"]){
-?>
-<? include("../include/config.php");?>
-<HTML>
-<title><? echo $tsite?></title>
-<Script Language="JavaScript">
-function validate(form1) {
-if (form1.login_.value == "")
-{ alert("O Campo Login é obrigatório!");
-   form1.login_.focus();
-return (false);
-}
-if (form1.senha_.value == "")
-{ alert("O Campo Senha é obrigatório!");
-   form1.senha_.focus();
-   return (false);
-}
-return (true);
-}
-</script>
-<form action="login.php" method="post" onsubmit="return validate(this);">
-  <table width="300" border="0" align="center" cellpadding="0" cellspacing="2">
-    <tr valign="top">
-      <td height="45" colspan="3" align="center"><font size="<? echo $ttitulo?>" face="<? echo $fonte?>"><font color="#FF0000"><strong>Usuário ou Senha Inválidos</strong></font>
-	  <br><font size="1">Por favor tente novamente!</font>
-</font></td>
-    </tr>
-</table>
-  <table border="0" align="center" cellpadding="0" cellspacing="3">
-    <tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Login:</font></td>
-      <td colspan="2"><input name="login_" type="text" size="25"></td></tr>
-<tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Senha:</font></td>
-      <td><input name="senha_" type="password" size="15"></td>
-	  <td><input name="logar" type="submit" value="Logar"></td>
-	  </tr>
-</table>
-</form>
-</HTML>
-<? }?>
+        <div class="login-conteudo">
+            <?php if ($logout): ?>
+            <div class="success">
+                Logout efetuado com sucesso!
+            </div>
+            <?php endif; ?>
+            <?php if ($loginFalhou): ?>
+            <div class="error">
+                Login e/ou senha informados estão incorretos.
+            </div>
+            <?php endif; ?>
+            
+            <form action="" method="post">
+                <div class="form-field">
+                    <label for="login">Login:</label>
+                    <input type="text" name="login" id="login" />
+                </div>
+
+                <div class="form-field">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" id="senha" />
+                </div>
+
+                <div class="login-rodape">
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

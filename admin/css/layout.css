@@ -1,0 +1,104 @@
+body {
+    background: #f5f4ef;
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a {
+    color: #390;
+}
+
+a:hover, a:active {
+    color: #369;
+}
+
+.barra-superior {
+    background: #333;
+    background: -moz-linear-gradient(top, #434343, #333);
+    background: -webkit-gradient(linear, left top, left bottom, from(#434343), to(#333));
+    border-bottom: 1px solid #000;
+    box-shadow: 0 3px 5px rgba(0,0,0,.30);
+    -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.30);
+    -moz-box-shadow: 0 3px 5px rgba(0,0,0,.30);
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    text-align: right;
+}
+
+.barra-superior a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.barra-superior a:hover, .barra-superior a:active {
+    color: #369;
+}
+
+.pagina-header {
+    margin: 30px 0;
+}
+
+.navegacao {
+    background: #369;
+    background: -moz-linear-gradient(top, #369, #285078);
+    background: -webkit-gradient(linear, left top, left bottom, from(#369), to(#285078));
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0,0,0,.30);
+    -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.30);
+    -moz-box-shadow: 0 3px 5px rgba(0,0,0,.30);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.navegacao ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navegacao ul li {
+    float: left;
+}
+
+.navegacao a {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.navegacao a:hover {
+    color: #000;
+}
+
+.navegacao a.highlight {
+    background: #993;
+    background: -moz-linear-gradient(top, #ffe51e, #ffbf00);
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffe51e), to(#ffbf00));
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    color: #000;
+}
+
+.navegacao a.highlight:hover {
+    color: #fff;
+}
+
+.submenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.submenu ul li a {
+    background: #faf9ff;
+    border-bottom: 1px dotted #000;
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+    text-decoration: none;
+}

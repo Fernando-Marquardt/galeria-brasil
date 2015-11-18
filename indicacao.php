@@ -1,69 +1,80 @@
-<? include("path.php");?>
+<?php
+require_once 'core/inc.comum.php';
+?>
 
 <Script Language="JavaScript">
 function validate(theForm) {
-if (theForm.nome.value == "")
-{
-   alert("Digite seu Nome!");
-   theForm.nome.focus();
-   return (false);
-}
-if (theForm.email.value == "")
-{
-   alert("Digite seu E-mail!");
-   theForm.email.focus();
-   return (false);
-}
-if (theForm.nomepara.value == "")
-{
-   alert("Digite o nome do seu amigo!");
-   theForm.nomepara.focus();
-   return (false);
-}
-if (theForm.emailpara.value == "")
-{
-   alert("Digite o email do seu amigo!");
-   theForm.emailpara.focus();
-   return (false);
-}
-return (true);
+    if (theForm.nome.value == "") {
+        alert("Digite seu Nome!");
+        theForm.nome.focus();
+        return (false);
+    }
+    
+    if (theForm.email.value == "") {
+        alert("Digite seu E-mail!");
+        theForm.email.focus();
+        return (false);
+    }
+    
+    if (theForm.nomepara.value == "") {
+        alert("Digite o nome do seu amigo!");
+        theForm.nomepara.focus();
+        return (false);
+    }
+    
+    if (theForm.emailpara.value == "") {
+        alert("Digite o email do seu amigo!");
+        theForm.emailpara.focus();
+        return (false);
+    }
+    
+    return (true);
 }
 </script>
 
-<center>
 <form action="indicacao_cod.php" method="post" onsubmit="return validate(this);">
-
-<input name="id" type="hidden" value="<?= $_GET['id']?>">
-<input name="imagem" type="hidden" value="<?= $_GET['imagem']?>">
-<input name="pagina" type="hidden" value="<?= $_GET['pg']; ?>" />
+    <input name="id" type="hidden" value="<?php echo $_GET['id']; ?>"/>
+    <input name="imagem" type="hidden" value="<?php echo $_GET['imagem']; ?>" />
+    <input name="pagina" type="hidden" value="<?php echo $_GET['pg']; ?>" />
               
     <table border="0" cellspacing="2" cellpadding="0">
-      <tr> 
-        <TD width="100" align=right><strong><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>">Seu 
-          Nome:</font></strong></TD>
-        <TD width="150"> <INPUT style="BORDER:1px solid <? echo $cortexto?>; width:150" maxLength="100" name="nome">
-        </TD>
-      </tr>
-      <tr> 
-        <TD align=right><strong><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>">Seu 
-          E-mail:</font></strong></TD>
-        <TD><INPUT style="BORDER:1px solid <? echo $cortexto?>; width:150" maxLength="100" name="email"></TD>
-      </tr>
-      <tr> 
-        <TD align=right><strong><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>">Nome 
-          do Amigo:</font></strong></TD>
-        <TD width="150"> <INPUT style="BORDER:1px solid <? echo $cortexto?>; width:150" maxLength="100" name="nomepara">
-        </TD>
-      </tr>
-      <tr> 
-        <TD align=right><strong><font color="<? echo $cortexto?>" size="<? echo $tfonte?>" face="<? echo $fonte?>">E-mail 
-          do Amigo:</font></strong></TD>
-        <TD><INPUT style="BORDER:1px solid <? echo $cortexto?>; width:150" maxLength="100" name="emailpara"></TD>
-      </tr>
-      <tr align="center"> 
-        <TD height="30" colSpan=2> <INPUT type=submit value=Enviar style="border:1px solid <? echo $cortexto?>"> 
-          <INPUT type=reset value=Limpar style="border:1px solid <? echo $cortexto?>"> </TD>
-      </tr>
+        <tr> 
+            <td width="100" align=right>
+                <label for="nome">Seu Nome:</label>
+            </td>
+            <td width="150">
+                <input type="text" name="nome" id="nome" style="width: 150px;">
+            </td>
+        </tr>
+        <tr> 
+            <td align=right>
+                <label for="email">Seu E-mail:</label>
+            </td>
+            <td>
+                <input type="text" name="email" id="email" style="width: 150px;" />
+            </td>
+        </tr>
+        <tr> 
+            <td align=right>
+                <label for="nomepara">Nome do Amigo:</label>
+            </td>
+            <td width="150">
+                <input type="text" name="nomepara" id="nomepara" style="width: 150px;" />
+            </td>
+        </tr>
+        <tr> 
+            <td align=right>
+                <label for="emailpara">E-mail do Amigo:</label>
+            </td>
+            <td>
+                <input type="text" name="emailpara" id="emailpara" style="width: 150px;" />
+            </td>
+        </tr>
+        <tr align="center"> 
+            <td height="30" colspan=2>
+                <input type="submit" value="Enviar" /> 
+                <input type="reset" value="Limpar" />
+            </td>
+        </tr>
     </table>
-			</form>
-</center>
+</form>

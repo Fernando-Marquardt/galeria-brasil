@@ -1,6 +1,12 @@
-<? $sql = mysql_query("delete from users where id='". $_GET['id'] ."'");?>
-<center>
-  <font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><b>Usuário excluído com sucesso!</b> </font><BR><br>
-  <font face='<? echo $fonte?>' size='<? echo $tfonte?>'><a href='?nivel=<? echo $nivel?>&acao=lista'>Clique 
-  aqui para Voltar</a></font> 
-</center>
+<?php
+if (!defined('IN_SYS')) die();
+
+$delete = db_query("DELETE FROM usuario WHERE id_usuario = '{$_GET['id']}'");
+?>
+<?php if ($delete): ?>
+<div class="success">Usuário excluído com sucesso!</div>
+<?php else: ?>
+<div class="error">Não foi possível excluir o usuário.</div>
+<?php endif; ?>
+
+<center><a href="?p=users_lista">Voltar para os usuários</a></center>

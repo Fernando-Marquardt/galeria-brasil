@@ -1,8 +1,27 @@
-<? $sql = mysql_query("UPDATE users SET nome='$nome', email='$email', login='$login', senha='$senha2', nivel='$user_nivel' WHERE id='$id'");?>
+<?php
+if (!defined('IN_SYS')) die();
 
-<center>
-  <font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><strong>Usuário alterado com sucesso!</strong></font><BR>
-  <br>
-  <font face='<? echo $fonte?>' size='<? echo $tfonte?>'><a href='?nivel=<? echo $nivel?>&acao=lista'>Clique 
-  aqui para Voltar</a></font> 
-</center>
+$values = "nome = '{$_POST['nome']}', email = '{$_POST['email']}'";
+
+if ($_SESSION['usuario']['nivel'] == 1) {
+    $login = anti_injection($_POST['login']);
+    $values .= ", login = '{$login}', nivel = '{$_POST['nivel']}'";
+}
+
+$senha = trim($_POST['senha']);
+
+if (!empty($senha)) {
+    $senha = md5($senha);
+    $values .= ", senha = '{$senha}'";
+}
+
+$update = db_query("UPDATE usuario SET {$values} WHERE id_usuario = {$_GET['id']}");
+?>
+
+<?php if ($update): ?>
+<div class="success">Usuário alterado com sucesso!</div>
+<?php else: ?>
+<div class="error">Não foi possível alterar os dados do usuário.</div>
+<?php endif; ?>
+
+<center><a href="?p=users_lista">Voltar para os usuários</a></center>

@@ -1,28 +1,44 @@
 <?php
-include("verifica.php");
-include("menu.php");
+if (!defined('IN_SYS')) die();
+
+$pasta = '';
+$pastaCriada = false;
+$fotoEnviada = false;
 
 // inicia criação de pasta
-if ($_POST['nomedapasta'] != "") {
-	$pasta = @mkdir("../images/galeria/". $_POST['nomedapasta'], 0777);
-	@chmod("../images/galeria/". $_POST['nomedapasta'] ."/", 0777);
+if ($_POST['nomedapasta'] != '') {
+    $pasta = '../galerias/' . $_POST['nomedapasta'];
+    $pastaCriada = mkdir($pasta, 0777);
+    chmod($pasta, 0777);
 }
 // fim da criação da pasta
 
 // inicia a função para enviar a foto
-if ($pasta == $_POST['nomedapasta'] && $_FILES['foto01']['tmp_name'] != "") {
-	if (copy($_FILES['foto01']['tmp_name'], "../images/galeria/". $_POST['nomedapasta'] ."/". $_FILES['foto01']['name'])) {
-		@chmod("../images/galeria/". $_POST['nomedapasta'] ."/". $_FILES['foto01']['name'], 0777);
-	}else{
-		echo "<br /><div align='center'><font face='$fonte' size='$tamanhofonte'><strong>Erro no enviar a foto!</strong></font></div><br />";
-	}
+if ($pastaCriada && $_FILES['foto01']['tmp_name'] != '') {
+    if (copy($_FILES['foto01']['tmp_name'], $pasta . "/" . $_FILES['foto01']['name'])) {
+        $fotoEnviada = true;
+        chmod($pasta . "/" . $_FILES['foto01']['name'], 0777);
+    } else {
+        $fotoEnviada = false;
+    }
 }
 // termina a função para enviar a foto
 
-$sql = "INSERT INTO galeria (nome, dia, mes, ano, local, pasta, foto01) VALUES ('". $_POST['nome'] ."','". $_POST['dia'] ."','". $_POST['mes'] ."','". $_POST['ano'] ."','". $_POST['local'] ."','". $_POST['nomedapasta'] ."','". $_FILES['foto01']['name'] ."')"; 
-$sql = mysql_query($sql);
+$titulo = trim($_POST['titulo']);
+$data = $_POST['ano'] . '-' . $_POST['mes'] . '-' . $_POST['dia'];
+$diretorio = trim($_POST['nomedapasta']);
+
+$sql = "INSERT INTO galeria (titulo, data, local, diretorio, capa) 
+    VALUES ('{$titulo}','{$data}','{$_POST['local']}','{$diretorio}','{$_FILES['foto01']['name']}')"; 
+$query = db_query($sql);
 ?>
-<meta http-equiv="refresh" content="1;URL=../images/enviar_fotos.php?nomedapasta=<? echo $_POST['nomedapasta']?>&nivel=<? echo $nivel?>">
-<center>
-	<font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><b>Galeria cadastrada com sucesso!</b> </font>
-</center>
+<?php if ($query): ?>
+<div class="success">Galeria cadastrada com sucesso!</div>
+<?php else: ?>
+<div class="error">Ocorreu um erro ao tentar cadastrar a galeria.</div>
+<?php endif; ?>
+<?php if ($_FILES['foto01']['tmp_name'] != '' && $fotoEnviada === false): ?>
+<div class="error">Erro ao enviar a foto de destaque.</div>
+<?php endif; ?>
+
+<center><a href="?p=galerias">Voltar para as galerias</a></center>

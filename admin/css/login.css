@@ -1,0 +1,47 @@
+body {
+    background: #f5f4ef;
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.login-painel {
+    background: #fff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    left: 50%;
+    margin: -10% 0 0 -150px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    width: 300px;
+}
+
+.login-titulo {
+    background: #369;
+    background: -moz-linear-gradient(top, #369, #285078);
+    background: -webkit-gradient(linear, left top, left bottom, from(#369), to(#285078));
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.login-conteudo {
+    margin-top: 10px;
+}
+
+.login-conteudo label {
+    width: 50px;
+}
+
+.login-conteudo input {
+    width: 220px;
+}
+
+.login-rodape {
+    margin-top: 10px;
+    text-align: right;
+}

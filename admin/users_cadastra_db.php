@@ -1,25 +1,29 @@
-<? $sql = mysql_query("SELECT * FROM users where login='". $_POST['login'] ."'");
-$dados=mysql_fetch_array($sql);
-if($_POST['login'] == $dados['login']){?>
+<?php
+if (!defined('IN_SYS')) die();
 
-<center>
-  <font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><strong>O 
-  usuário <font color="#FF0000"><? echo $_POST['login']?></font> já está cadastrado</strong>.</font><BR>
-  <br>
-  <font face='<? echo $fonte?>' size='<? echo $tfonte?>'><a href='javascript:history.go(-1);'>Clique 
-  aqui para Voltar</a></font> 
-</center>
+$usuarioExistente = false;
 
-<? } else { $sql = mysql_query("Insert into users values('', '". $_POST['nome'] ."', '". $_POST['email'] ."', '". $_POST['login'] ."', '". $_POST['user_senha'] ."', '". $_POST['user_nivel'] ."')");?>
+$query = db_query("SELECT * FROM usuario WHERE login = '{$_POST['login']}'");
+$usuario = db_result($query);
 
-<center>
-  <font color="<? echo $cortexto?>" size="<? echo $ttitulo?>" face="<? echo $fonte?>"><strong>O 
-  usuário <font color="#FF0000"><? echo $$_POST['login']?></font> foi cadastrado com sucesso!</strong></font><BR>
-  <br>
-  <font face='<? echo $fonte?>' size='<? echo $tfonte?>'>Agora ele poderá acessar as partes restritas de seu site. Mas lembre-se, apenas você pode adicionar usuários.<br>
-<br>
-<a href='javascript:history.go(-1);'>Clique 
-  aqui para Voltar</a></font> 
-</center>
+$login = anti_injection($_POST['login']);
 
-<? }?>
+if ($usuario && $usuario['login'] == $_POST['login']) {
+    $usuarioExistente = true;
+} else {
+    $senha = md5($_POST['senha']);
+    
+    $valores = "'{$_POST['nome']}', '{$_POST['email']}', '{$login}', '{$senha}', '{$_POST['nivel']}'";
+    $insert = db_query("INSERT INTO usuario (nome, email, login, senha, nivel) VALUES ({$valores})");
+}
+?>
+
+<?php if ($usuarioExistente): ?>
+<div class="error">O login '<?php echo $login; ?>' já está cadastrado.</div>
+<?php elseif ($insert): ?>
+<div class="success">Usuário cadastrado com sucesso!</div>
+<?php else: ?>
+<div class="error">Não foi possível cadastrar o usuário.</div>
+<?php endif; ?>
+
+<center><a href="?p=users_lista">Voltar para os usuários</a></center>
