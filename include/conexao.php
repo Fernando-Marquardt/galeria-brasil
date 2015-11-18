@@ -1,0 +1,1 @@
+<? $conexao = mysql_connect("localhost", "USUARIO DO DB", "SENHA DO DB"); $db = mysql_select_db("BANCO DB");?>

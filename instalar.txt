@@ -1,0 +1,39 @@
+=======================================================
+Galeria Brasil 2.2
+Desenvolvido por Sandro Porto e Thiago RSL modificado por Grégory H. Ebertz
+Adaptação desta versão por: phpDemos
+Alterado: 13-06-2006 Por Tiago Anselmo.
+=======================================================
+
+INSTALAÇÃO:
+
+-Crie um crie usuário e um banco em seguida atribua o usuário para ele
+-Envie os arquivos para o servidor
+-Dê CHMOD 777 nos arquivos e pastas:
+
+/includes/conexao.php
+/images/
+
+-Edite o arquivo:
+/calendario/config.php
+Inserindo os dados de conexão com seu banco de dados.
+
+(se não sabe o que é CHMOD veja as videoaulas em www.phpdemos.com.br)
+
+-Abra seu Browser e acesse no seu servidor o arquivo instalar.php
+
+http://www,seiste.com.br/galeria/instalar.php
+
+Lembre-se que você pode enviar as imagens para a pasta, via FTP 
+
+CORREÇÕES DATA 13-06-2006
+
+- Alterei o arquivo com erro dos comentarios.
+- Alterei os tamanhos das janelas pop up para não ocultar os comentarios.
+- Alterei o arquivo imagemdim pois o outro estava com erro.
+- Alterei o sistema de compra pois estava ficando um x em cima da imagem.
+- Troquei os botões.
+
+Se quiserem abrir um tópico no forum para a galeria fiquem a disposição em:
+		http://www.superplugado.com.br/forum
+Irei responder tudo que precisarem por lá.
