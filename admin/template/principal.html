@@ -1,0 +1,11 @@
+{if $testes.config === false}
+<div class="aviso">
+	<img src="template/img/aviso.png" alt="Aviso" title="Aviso" /> Atenção! O arquivo core/inc.config.php está como Leitura e Escrita (CHMOD 0777), por segurança altere para Apenas Leitura (CHMOD 0666)
+</div>
+{/if}
+
+{if $testes.pasta_instalar == true}
+<div class="aviso">
+	<img src="template/img/aviso.png" alt="Aviso" title="Aviso" /> Atenção! O diretótio instalar/ não foi removido, por segurança remova este diretório do servidor
+</div>
+{/if}

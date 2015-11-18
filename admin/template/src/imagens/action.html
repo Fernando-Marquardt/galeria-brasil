@@ -1,0 +1,31 @@
+<h2>Imagem</h2>
+
+{if $action == 'del'}
+	{if $success == true}
+	<div class="mensagem">Imagem deletada com sucesso!</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back();">Clique aqui para continuar</a>
+	</p>
+	{else}
+	<div class="erro">Imagem não pode ser deletada</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back();">Clique aqui para voltar</a>
+	</p>
+	{/if}
+{else}
+	{if $success == true}
+	<div class="mensagem">Imagem salva com sucesso!</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back(-3);">Clique aqui para continuar</a>
+	</p>
+	{else}
+	<div class="erro">Imagem não pode ser salva</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back();">Clique aqui para voltar</a>
+	</p>
+	{/if}
+{/if}

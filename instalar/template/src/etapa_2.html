@@ -1,0 +1,120 @@
+<h2>Configurando Banco de Dados</h2>
+
+{if $configurar == true}
+<table class="tabela">
+	<tbody>
+		<tr>
+			<th>Endereço do Host:</th>
+			<td>{$database_hostname}</td>
+		</tr>
+		<tr>
+			<th>Nome de Usuário:</th>
+			<td>{$database_username}</td>
+		</tr>
+		<tr>
+			<th>Tabela:</th>
+			<td>{$database_name}</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="tabela" width="100%">
+	<tbody>
+		<tr>
+			<td>Conexão ao banco de dados</td>
+			<td>
+				{if $testes.mysql == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>Conexão à tabela do banco de dados</td>
+			<td>
+				{if $testes.tabela == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>Configurar inc.config.php</td>
+			<td>
+				{if $config_alterado == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>Criar as tabelas no banco de dados</td>
+			<td>
+				{if $criar_tabelas == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+{if $prosseguir === false}
+<div class="aviso">
+	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Foi detectado que um ou mais itens não foram completados com sucesso.
+</div>
+
+<p align="center">
+	<a href="?e=3">« Voltar</a>
+</p>
+{else}
+<p align="center">
+	<a href="?e=3">Prosseguir »</a>
+</p>
+{/if}
+{else}
+{literal}
+<script type="text/javascript">
+window.addEvent('domready', function() {
+	$('form_database').addEvent('submit', function(form) {
+		var CheckForm = new Form('form_database');
+		
+		if(!CheckForm.validate()) {
+			new Event(form).stop();
+		}
+	});
+});
+</script>
+{/literal}
+
+<form action="?e=2&act=configurar" method="post" id="form_database">
+	<fieldset>
+		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
+		
+		<p>
+			<label for="database_hostname">Endereço do Host (*):</label>
+			<br /><input type="text" name="database_hostname" id="database_hostname" class="required" />
+			
+			<br /><label for="database_username">Nome de Usuário (*):</label>
+			<br /><input type="text" name="database_username" id="database_username" class="required" />
+			
+			<br /><label for="database_password">Senha:</label>
+			<br /><input type="password" name="database_password" id="database_password"  class="repeat" />
+			
+			<br /><label for="database_password_r">Repetir Senha:</label>
+			<br /><input type="password" name="database_password_r" id="database_password_r" />
+			
+			<br /><label for="database_name">Tabela (*):</label>
+			<br /><input type="text" name="database_name" id="database_name" class="required" />
+		</p>
+		
+		<p>
+			<input type="submit" class="button" value="Prosseguir" />
+		</p>
+	</fieldset>
+</form>
+{/if}

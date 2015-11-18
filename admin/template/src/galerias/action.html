@@ -1,0 +1,39 @@
+<h2>Galerias</h2>
+
+{if $action == 'del'}
+	{if $success == true}
+	<div class="mensagem">
+		Galeria deletada com sucesso!
+		
+		{if $possui_imagens == true}
+		<p>
+			As imagens desta galeria não foram removidas do sistema. Para removê-las permanentemente, solicite ao administrador do sistema.
+		</p>
+		{/if}
+	</div>
+	
+	<p style="text-align: center;">
+		<a href="?src=galerias&p=lista">Clique aqui para continuar</a>
+	</p>
+	{else}
+	<div class="erro">Galeria não pode ser deletada</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back();">Clique aqui para voltar</a>
+	</p>
+	{/if}
+{else}
+	{if $success == true}
+	<div class="mensagem">Galeria salva com sucesso!</div>
+	
+	<p style="text-align: center;">
+		<a href="?src=imagens&p=lista&gal={$gal_codigo}">Clique aqui para continuar</a>
+	</p>
+	{else}
+	<div class="erro">Galeria não pode ser salva</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back();">Clique aqui para voltar</a>
+	</p>
+	{/if}
+{/if}

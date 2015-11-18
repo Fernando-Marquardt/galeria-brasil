@@ -1,0 +1,31 @@
+<h2>Usuários</h2>
+
+{if $action == 'del'}
+	{if $success == true}
+	<div class="mensagem">Usuário deletado com sucesso!</div>
+	
+	<p style="text-align: center;">
+		<a href="?src=usuarios&p=lista">Clique aqui para continuar</a>
+	</p>
+	{else}
+	<div class="erro">Usuário não pode ser deletado</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back();">Clique aqui para voltar</a>
+	</p>
+	{/if}
+{else}
+	{if $success == true}
+	<div class="mensagem">Usuário salvo com sucesso!</div>
+	
+	<p style="text-align: center;">
+		<a href="?src=usuarios&p=lista">Clique aqui para continuar</a>
+	</p>
+	{else}
+	<div class="erro">Usuário não pode ser salvo</div>
+	
+	<p style="text-align: center;">
+		<a href="javascript: System.back();">Clique aqui para voltar</a>
+	</p>
+	{/if}
+{/if}

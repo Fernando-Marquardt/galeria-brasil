@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	
+	<link href="template/style.css" type="text/css" rel="stylesheet" />
+	<link href="template/form.css" type="text/css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="../core/js/mootools.js"></script>
+	<script type="text/javascript" src="../core/js/system.js"></script>
+	<script type="text/javascript" src="../core/js/form.js"></script>
+	<script type="text/javascript" src="../core/js/mask.js"></script>
+	
+	<title>Galeria Brasil {$gb_version} - {$config.titulo}</title>
+</head>
+<body>
+
+<div id="container">
+	<div id="menu">
+		<ul>
+			<li><a href="index.php"><img src="template/img/principal.png" alt="" /> Principal</a></li>
+			<li><a href="index.php?src=galerias&p=lista"><img src="template/img/galerias.png" alt="" /> Galerias</a></li>
+			<li><a href="index.php?src=usuarios&p=lista"><img src="template/img/usuarios.png" alt="" /> Usuários</a></li>
+			<li><a href="index.php?src=config&p=form"><img src="template/img/config.png" alt="" /> Configurações</a></li>
+			<li><a href="logoff.php"><img src="template/img/logoff.png" alt="" /> Sair</a></li>
+		</ul>
+	</div>
+	
+	<div id="conteudo">
+		{if $pagina_error == true}
+		<div class="pagina_error">
+			Página não encontrada
+		</div>
+		{/if}
+		
+		{$conteudo}
+	</div>
+	
+	<div id="footer">
+		2008 - <a href="http://sourceforge.net/projects/galeriabrasil" target="_blank">Galeria Brasil {$gb_version}</a>
+	</div>
+</div>
+
+</body>
+</html>

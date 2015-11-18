@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	
+	<link href="template/style.css" type="text/css" rel="stylesheet" />
+	<link href="template/form.css" type="text/css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="../core/js/mootools.js"></script>
+	<script type="text/javascript" src="../core/js/form.js"></script>
+	
+	<title>Instalando Galeria Brasil 3</title>
+</head>
+<body>
+
+<div id="container">
+	<div id="etapas">
+		{foreach item=etapa key=etapa_num from=$etapas}
+			{if $etapa_num == $etapa_atual}
+				<span class="atual">{$etapa_num}</span>
+			{else}
+				{if $etapa_num < $etapa_atual}
+					<span class="passou">{$etapa_num}</span>
+				{else}
+					<span>{$etapa_num}</span>
+				{/if}
+			{/if}
+		{/foreach}
+	</div>
+	
+	<div id="conteudo">
+		{$conteudo}
+	</div>
+	
+	<div id="footer">
+		2008 - <a href="http://sourceforge.net/projects/galeriabrasil" target="_blank">Galeria Brasil {$gb_version}</a>
+	</div>
+</div>
+
+</body>
+</html>

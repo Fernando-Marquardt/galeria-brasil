@@ -1,0 +1,53 @@
+{literal}
+<script type="text/javascript">
+function deletar(id) {
+	if (confirm('Deseja realmente deletar esta galeria?')) {
+		System.redirect('?src=galerias&p=action&act=del&id='+ id);
+	}
+}
+</script>
+{/literal}
+
+<h2>Galerias</h2>
+
+<div id="submenu">
+	<ul>
+		<li><a href="?src=galerias&p=form"><img src="template/img/adicionar.png" alt="" /> Adicionar Galeria</a></li>
+	</ul>
+</div>
+
+<table id="galerias">
+	{foreach name=galerias item=galeria from=$galerias}
+	{if $smarty.foreach.galerias.first}
+	<tr>
+	{/if}
+		<td>
+			<a href="?src=imagens&p=lista&gal={$galeria.gal_codigo}">
+				<img src="imagem.php?gal={$galeria.gal_pasta}&img={$galeria.img_nome_arquivo}&thumb=2" alt="{$galeria.gal_titulo}" title="{$galeria.gal_titulo}" />
+				<br />{$galeria.gal_local} - <strong>{$galeria.total_imagens} fotos</strong>
+				<br />{$galeria.gal_data}
+			</a>
+			<div class="toolbar">
+				<a href="?src=galerias&p=form&id={$galeria.gal_codigo}"><img src="template/img/editar.png" alt="Editar" title="Editar" /></a>
+				<a href="#{$galeria.gal_codigo}" onclick="deletar({$galeria.gal_codigo});"><img src="template/img/deletar.png" alt="Deletar" title="Deletar" /></a>
+			</div>
+		</td>
+	{if $smarty.foreach.galerias.last}
+	</tr>
+	{/if}
+	{if !$smarty.foreach.galerias.iteration % 3}
+	</tr>
+	<tr>
+	{/if}
+	{foreachelse}
+	<tr>
+		<td>
+			Nenhuma galeria encontrada
+		</td>
+	</tr>
+	{/foreach}
+</table>
+
+<div id="paginacao">
+	{$paginacao}
+</div>

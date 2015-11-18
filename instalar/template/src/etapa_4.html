@@ -1,0 +1,72 @@
+<h2>Criando conta de usuário</h2>
+
+{if $criar == true}
+<table class="tabela" width="100%">
+	<tbody>
+		<tr>
+			<td>Criar conta de usuário</td>
+			<td>
+				{if $criado == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+			</td>
+		</tr>
+	</tbody>
+</table>
+{if $criado === false}
+<div class="aviso">
+	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Não foi possível criar a conta de usuário e por isso não será possível acessar o sistema
+</div>
+
+<p align="center">
+	<a href="?e=5">« Voltar</a>
+</p>
+{else}
+<p align="center">
+	<a href="?e=5">Prosseguir »</a>
+</p>
+{/if}
+{else}
+{literal}
+<script type="text/javascript">
+window.addEvent('domready', function() {
+	$('form_usuario').addEvent('submit', function(form) {
+		var CheckForm = new Form('form_usuario');
+		
+		if(!CheckForm.validate()) {
+			new Event(form).stop();
+		}
+	});
+});
+</script>
+{/literal}
+
+<form action="?e=4&act=criar" method="post" id="form_usuario">
+	<fieldset>
+		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
+		
+		<p>
+			<label for="usu_nome"><strong>Nome (*):</strong></label>
+			<br /><input type="text" name="usu_nome" id="usu_nome" size="40" class="required" />
+			
+			<br /><label for="usu_email"><strong>E-Mail (*):</strong></label>
+			<br /><input type="text" name="usu_email" id="usu_email" size="60" class="required email" />
+			
+			<br /><label for="usu_login"><strong>Login (*):</strong></label>
+			<br /><input type="text" name="usu_login" id="usu_login" size="30" class="required" />
+			
+			<br /><label for="usu_senha"><strong>Senha (*):</strong></label>
+			<br /><input type="password" name="usu_senha" id="usu_senha" size="30" class="required repeat" />
+			
+			<br /><label for="usu_senha_r"><strong>Repetir Senha (*):</strong></label>
+			<br /><input type="password" name="usu_senha_r" id="usu_senha_r" size="30" class="required" />
+		</p>
+		
+		<p>
+			<input type="submit" class="button" value="Criar" />
+		</p>
+	</fieldset>
+</form>
+{/if}

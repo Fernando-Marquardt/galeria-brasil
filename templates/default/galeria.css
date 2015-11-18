@@ -1,0 +1,110 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+body {
+	background-color: #FFFE85;
+	color: #222222;
+}
+
+a {
+	color: #5163E7;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #00A918;
+}
+
+h2 {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 14px;
+}
+
+p {
+	margin: 10px 0 20px 0;
+}
+
+/**
+ * Estilos da Estrutura
+ */
+#container {
+	padding: 20px;
+}
+
+#header {
+	background-color: #F5E31D;
+	padding: 10px;
+	color: #297A00;
+	margin-bottom: 10px;
+}
+
+#header h2 {
+	margin-bottom: 0;
+}
+
+#lista {
+	background-color: #FFF048;
+	width: 203px;
+	padding: 6px 3px;
+	float: left;
+	display: block;
+	margin-right: 10px;
+}
+
+#lista #imagens img {
+	vertical-align: middle;
+	margin: 2px 1px;
+}
+
+#lista #paginacao {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#lista #paginacao img {
+	vertical-align: middle;
+}
+
+#imagem {
+	float: left;
+	display: block;
+	width: 400px;
+	text-align: center;
+}
+
+#imagem #toolbar {
+	margin: 10px 0;
+}
+
+#footer {
+	width: 100%;
+	margin-top: 20px;
+	font-size: 10px;
+	text-align: center;
+}
+
+/**
+ * Estilos
+ */
+
+.erro {
+	color: #FF4F56;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.mensagem {
+	text-align: center;
+	margin-bottom: 10px;
+}

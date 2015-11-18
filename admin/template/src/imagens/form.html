@@ -1,0 +1,18 @@
+<h2>Editar Imagem</h2>
+
+<form id="form_imagem" action="?src=imagens&p=action" method="post">
+	<fieldset>
+		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
+		
+		<input type="hidden" name="img_codigo" value="{$imagem.img_codigo}" />
+		
+		<p>
+			<label for="img_mensagem"><strong>Mensagem (*):</strong></label>
+			<br /><textarea name="img_mensagem" id="img_mensagem" class="required" cols="60">{$imagem.img_mensagem}</textarea>
+		</p>
+		
+		<p>
+			<input type="submit" class="button" value="Salvar" />
+		</p>
+	</fieldset>
+</form>

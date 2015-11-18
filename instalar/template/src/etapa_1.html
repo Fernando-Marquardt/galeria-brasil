@@ -1,0 +1,191 @@
+<h2>Verificando Requisitos</h2>
+
+<table class="tabela" width="100%">
+	<thead>
+		<tr>
+			<th>Requisitos</th>
+			<th>Necessário</th>
+			<th>Encontrado</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				{if $testes.php == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				PHP
+			</td>
+			<td>Versão 5 ou superior</td>
+			<td>Versão {$php_version}</td>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.mysql === true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				MySQL
+			</td>
+			<td>Versão 4.1 ou superior</td>
+			<td>
+				{if $testes.mysql === -1}
+					MySQL não está instalado
+				{else}
+					Versão {$mysql_version}
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.gd == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				Biblioteca GD
+			</td>
+			<td>Habilitado</td>
+			<td>
+				{if $testes.gd == true}
+					Habilitado
+				{else}
+					Desabilitado
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.wrt_config == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				Permissão de escrita no arquivo core/inc.config.php
+			</td>
+			<td>Leitura e Escrita (CHMOD 0777)</td>
+			<td>
+				{if $testes.wrt_config == true}
+					Leitura e Escrita
+				{else}
+					Somente Leitura
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.wrt_galerias == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				Permissão de escrita na pasta galerias/
+			</td>
+			<td>Leitura e Escrita (CHMOD 0777)</td>
+			<td>
+				{if $testes.wrt_galerias == true}
+					Leitura e Escrita
+				{else}
+					Somente Leitura
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.wrt_compile == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				Permissão de escrita na pasta compile/
+			</td>
+			<td>Leitura e Escrita (CHMOD 0777)</td>
+			<td>
+				{if $testes.wrt_compile == true}
+					Leitura e Escrita
+				{else}
+					Somente Leitura
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<th>Recomendado</th>
+			<th>Necessáio</th>
+			<th>Encontrado</th>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.gif == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				Suporte à GIF
+			</td>
+			<td>Habilitado</td>
+			<td>
+				{if $testes.gif == true}
+					Habilitado
+				{else}
+					Desabilitado
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.jpg == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				Suporte à JPG
+			</td>
+			<td>Habilitado</td>
+			<td>
+				{if $testes.jpg == true}
+					Habilitado
+				{else}
+					Desabilitado
+				{/if}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{if $testes.png == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+				Suporte à PNG
+			</td>
+			<td>Habilitado</td>
+			<td>
+				{if $testes.png == true}
+					Habilitado
+				{else}
+					Desabilitado
+				{/if}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+{if $testes.gif == false || $testes.jpg == false || $testes.png == false}
+<div class="aviso">
+	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Atenção! Foi detectado que um ou mais tipos de imagem não é suportado pelo servidor. Caso o mesmo não seja habilitado, poderão haver inconsistências no sistema.
+</div>
+{/if}
+
+{if $permitir_prosseguir === false}
+<div class="aviso">
+	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Foi detectado que um ou mais requisitos não foram atendidos e não será possível prosseguir com a instalação.
+</div>
+{else}
+<p align="center">
+	
+	<a href="?e=2">Prosseguir »</a>
+</p>
+{/if}

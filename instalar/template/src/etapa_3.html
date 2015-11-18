@@ -1,0 +1,92 @@
+<h2>Configurando Galeria</h2>
+
+{if $configurar == true}
+<table class="tabela" width="100%">
+	<tbody>
+		<tr>
+			<td>Configurar galeria</td>
+			<td>
+				{if $success == true}
+					<img src="template/img/success.png" alt="OK" title="OK" />
+				{else}
+					<img src="template/img/failed.png" alt="Falhou" title="Falhou" />
+				{/if}
+			</td>
+		</tr>
+	</tbody>
+</table>
+{if $success === false}
+<div class="aviso">
+	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Foi detectado que um ou mais itens não puderam ser configurados com sucesso.
+</div>
+
+<p align="center">
+	<a href="?e=4">« Voltar</a>
+</p>
+{else}
+<p align="center">
+	<a href="?e=4">Prosseguir »</a>
+</p>
+{/if}
+{else}
+{literal}
+<script type="text/javascript">
+window.addEvent('domready', function() {
+	$('form_config').addEvent('submit', function(form) {
+		var CheckForm = new Form('form_config');
+		
+		if(!CheckForm.validate()) {
+			new Event(form).stop();
+		}
+	});
+});
+</script>
+{/literal}
+
+<form id="form_config" action="?e=3&act=configurar" method="post">
+	<fieldset>
+		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
+		
+		<p>
+			<label for="config[titulo]"><strong>Nome do Site (*):</strong></label>
+			<br /><input type="text" name="config[titulo]" id="config[titulo]" size="40" class="required" />
+			
+			<br /><label for="config[email_admin]"><strong>E-Mail do Administrador (*):</strong></label>
+			<br /><input type="text" name="config[email_admin]" id="config[email_admin]" size="60" class="required email" />
+			
+			<p>
+				<label for="config[site_url]"><strong>Endereço do Site (*):</strong></label>
+				<br /><input type="text" name="config[site_url]" id="config[site_url]" size="60" class="required" />
+				
+				<br /><label for="config[site_path]"><strong>Caminho do Site (*):</strong></label>
+				<br /><input type="text" name="config[site_path]" id="config[site_path]" size="60" class="required" />
+				
+				<br /><label for="config[template]">Template:</label>
+				<br /><select name="config[template]">
+					{foreach item=template from=$templates}
+					<option value="{$template}"{if $template == 'default'} selected="selected"{/if}>{$template}</option>
+					{/foreach}
+				</select>
+			</p>
+			
+			<p>
+				<label for="config[permitir_indicar]"><strong>Permitir indicar a imagem à um amigo:</strong></label>
+				<br /><input type="radio" name="config[permitir_indicar]" value="1" class="checkbox" /> Sim
+				<input type="radio" name="config[permitir_indicar]" value="0" class="checkbox" checked="checked" /> Não
+				
+				<br /><label for="config[permitir_imprimir]"><strong>Permitir imprimir a imagem:</strong></label>
+				<br /><input type="radio" name="config[permitir_imprimir]" value="1" class="checkbox" /> Sim
+				<input type="radio" name="config[permitir_imprimir]" value="0" class="checkbox" checked="checked" /> Não
+				
+				<br /><label for="config[permitir_tamanho_real]"><strong>Permitir ver imagem em tamanho real:</strong></label>
+				<br /><input type="radio" name="config[permitir_tamanho_real]" value="1" class="checkbox" /> Sim
+				<input type="radio" name="config[permitir_tamanho_real]" value="0" class="checkbox" checked="checked" /> Não
+			</p>
+		</p>
+		
+		<p>
+			<input type="submit" class="button" value="Salvar" />
+		</p>
+	</fieldset>
+</form>
+{/if}

@@ -1,0 +1,120 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+body {
+	background-color: #FFFE85;
+	color: #222222;
+}
+
+a {
+	color: #5163E7;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #00A918;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+p {
+	margin: 10px 0 20px 0;
+}
+
+/**
+ * Estilos da Estrutura
+ */
+
+#container {
+	width: 760px;
+	margin: 0 auto;
+	padding: 30px;
+}
+
+#etapas {
+	background-color: #F5E31D;
+	padding: 10px;
+	color: #297A00;
+	margin-bottom: 10px;
+}
+
+#etapas span {
+	color: #FFFE85;
+	font-size: 50px;
+	margin-right: 40px;
+}
+
+#etapas .passou {
+	color: #297A00;
+}
+
+#etapas .atual {
+	color: #5163E7;
+}
+
+#footer {
+	font-size: 10px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#footer a {
+	font-size: 10px;
+}
+
+/**
+ * Estilo das tabelas
+ */
+.tabela th {
+	background-color: #F5E31D;
+	padding: 3px;
+}
+
+.tabela td {
+	background-color: #FFF048;
+	padding: 3px;
+}
+
+.tabela td img {
+	vertical-align: middle;
+}
+
+/**
+ * Estilos
+ */
+
+.erro {
+	color: #FF4F56;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.aviso {
+	background-color: #FFF048;
+	border: 1px dashed #FF4F56;
+	margin: 30px 20px;
+	padding: 10px;
+}
+
+.aviso img {
+	vertical-align: middle;
+}
+
+.mensagem {
+	text-align: center;
+	margin-bottom: 10px;
+}

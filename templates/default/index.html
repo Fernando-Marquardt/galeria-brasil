@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	
+	<link href="templates/{$config.template}/style.css" type="text/css" rel="stylesheet" />
+	
+	<script src="core/js/system.js" type="text/javascript"></script>
+	
+	<title>{$config.titulo}</title>
+</head>
+<body>
+
+<div id="container">
+	<table id="galerias">
+		{foreach name=galerias item=galeria from=$galerias}
+		{if $smarty.foreach.galerias.first}
+		<tr>
+		{/if}
+			<td>
+				<a href="#{$galeria.gal_codigo}" onclick="System.window.open('galeria.php?gal={$galeria.gal_codigo}', {literal}{width: 680, height: 450, name: 'Galeria', scrollbars: 'yes', resizable: 'no', position: {x: 'center', y: 'middle'}}{/literal});">
+					<img src="imagem.php?gal={$galeria.gal_pasta}&img={$galeria.img_nome_arquivo}&thumb=2" alt="{$galeria.gal_titulo}" title="{$galeria.gal_titulo}" />
+					<br />{$galeria.gal_local} - <strong>{$galeria.total_imagens} fotos</strong>
+					<br />{$galeria.gal_data}
+				</a>
+			</td>
+		{if $smarty.foreach.galerias.last}
+		</tr>
+		{/if}
+		{if !$smarty.foreach.galerias.iteration % 3}
+		</tr>
+		<tr>
+		{/if}
+		{foreachelse}
+		<tr>
+			<td>
+				Nenhuma galeria encontrada
+			</td>
+		</tr>
+		{/foreach}
+	</table>
+	
+	<div id="paginacao">
+		{$paginacao}
+	</div>
+	
+	<div id="footer">
+		2008 - Galeria Brasil 3
+	</div>
+</div>
+
+</body>
+</html>

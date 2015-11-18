@@ -1,0 +1,47 @@
+{literal}
+<script type="text/javascript">
+function deletar(id) {
+	if (confirm('Deseja realmente deletar este usuário?')) {
+		System.redirect('?src=usuarios&p=action&act=del&id='+ id);
+	}
+}
+</script>
+{/literal}
+
+<h2>Usuários</h2>
+
+<div id="submenu">
+	<ul>
+		<li><a href="?src=usuarios&p=form"><img src="template/img/adicionar.png" alt="" /> Adicionar Usuário</a></li>
+	</ul>
+</div>
+
+<table class="tabela" width="100%">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Login</th>
+			<th>E-Mail</th>
+			<th>Cadastrado em</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach item=usuario from=$usuarios}
+		<tr>
+			<td>{$usuario.usu_nome}</td>
+			<td>{$usuario.usu_login}</td>
+			<td>{$usuario.usu_email}</td>
+			<td>{$usuario.usu_data_cadastro}</td>
+			<td>
+				<a href="?src=usuarios&p=form&id={$usuario.usu_codigo}"><img src="template/img/editar.png" alt="Editar" title="Editar" /></a>
+				<a href="#{$usuario.usu_codigo}" onclick="deletar({$usuario.usu_codigo});"><img src="template/img/deletar.png" alt="Deletar" title="Deletar" /></a>
+			</td>
+		</tr>
+		{/foreach}
+	</tbody>
+</table>
+
+<div id="paginacao">
+	{$paginacao}
+</div>

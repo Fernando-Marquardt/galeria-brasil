@@ -1,0 +1,200 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+body {
+	background-color: #FFFE85;
+	color: #222222;
+}
+
+a {
+	color: #5163E7;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #00A918;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+p {
+	margin: 10px 0 20px 0;
+}
+
+/**
+ * Estilos da Estrutura
+ */
+
+#container {
+	width: 760px;
+	margin: 0 auto;
+	padding: 30px;
+}
+
+#footer {
+	font-size: 10px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#footer a {
+	font-size: 10px;
+}
+
+/**
+ * Estilos do menu
+ */
+
+#menu {
+	background-color: #F5E31D;
+	padding: 10px;
+	color: #297A00;
+	margin-bottom: 10px;
+	height: 26px;
+}
+
+#menu ul {
+	list-style: none;
+}
+
+#menu ul li {
+	float: left;
+	display: inline-block;
+}
+
+#menu ul li a {
+	display: block;
+	padding: 5px;
+}
+
+#menu ul li a:hover {
+	background-color: #FFF048;
+}
+
+#menu ul li img {
+	vertical-align: middle;
+}
+
+/**
+ * Estilos do Submenu
+ */
+
+#submenu {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#submenu ul {
+	list-style: none;
+}
+
+#submenu ul li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+#submenu li img {
+	vertical-align: middle;
+}
+
+/**
+ * Estilo das tabelas
+ */
+.tabela th {
+	background-color: #F5E31D;
+	padding: 3px;
+}
+
+.tabela td {
+	background-color: #FFF048;
+	padding: 3px;
+}
+
+/**
+ * Estilo da lista de galerias
+ */
+
+#galerias {
+	width: 750px;
+}
+
+#galerias td {
+	text-align: center;
+	padding: 5px;
+}
+
+#galerias td > a > img {
+	border: 1px solid #222222;
+}
+
+#galerias td > a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	font-size: 11px;
+}
+
+#galerias td a:hover {
+	background-color: #FFFEAA;
+}
+
+/**
+ * Paginação
+ */
+
+#paginacao {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#paginacao img {
+	vertical-align: middle;
+}
+
+
+/**
+ * Estilos
+ */
+
+.pagina_error {
+	color: #FF4F56;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.erro {
+	color: #FF4F56;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.aviso {
+	background-color: #FFF048;
+	border: 1px dashed #FF4F56;
+	margin: 30px 20px;
+	padding: 10px;
+}
+
+.aviso img {
+	vertical-align: middle;
+}
+
+.mensagem {
+	text-align: center;
+	margin-bottom: 10px;
+}

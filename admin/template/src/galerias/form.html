@@ -1,0 +1,52 @@
+{literal}
+<script type="text/javascript">
+window.addEvent('domready', function() {
+	var FormMask = new Mask();
+	
+	FormMask.create_mask('gal_data', 'date');
+	
+	$('form_galeria').addEvent('submit', function(form) {
+		var CheckForm = new Form('form_galeria');
+		
+		if(!CheckForm.validate()) {
+			new Event(form).stop();
+		}
+	});
+});
+</script>
+{/literal}
+
+<h2>{if $galeria.gal_codigo}Editar{else}Adicionar{/if} Galeria</h2>
+
+<form id="form_galeria" action="?src=galerias&p=action" method="post">
+	<fieldset>
+		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
+		
+		<input type="hidden" name="gal_codigo" value="{$galeria.gal_codigo}" />
+		
+		<p>
+			<label for="gal_titulo">Título (*):</label>
+			<br /><input type="text" name="gal_titulo" id="gal_titulo" size="70" value="{$galeria.gal_titulo}" class="required" />
+			
+			<br /><label for="gal_local">Local:</label>
+			<br /><input type="text" name="gal_local" id="gal_local" size="30" value="{$galeria.gal_local}" />
+			
+			<br /><label for="gal_data">Data:</label>
+			<br /><input type="text" name="gal_data" id="gal_data" value="{$galeria.gal_data}" class="date" />
+			
+			{if $galeria.gal_codigo}
+			<br /><label for="gal_codigo_img">Imagem de Capa:</label>
+			<br /><select name="gal_codigo_img">
+				<option value="0">Nenhuma</option>
+				{foreach item=imagem from=$imagens}
+				<option value="{$imagem.img_codigo}"{if $imagem.img_codigo == $galeria.gal_codigo_img} selected="selected"{/if}>{$imagem.img_nome_arquivo}</option>
+				{/foreach}
+			</select>
+			{/if}
+			
+			<p>
+				<input type="submit" class="button" value="Salvar" />
+			</p>
+		</p>
+	</fieldset>
+</form>

@@ -1,97 +1,62 @@
-<?
-include("path.php");
+<?php
+require('../core/inc.config.php');
+require('../core/class.system.php');
+require('../core/Smarty/Smarty.class.php');
 
-$query = mysql_query("Select * From users where login='". $_POST['login_'] ."' and senha='". $_POST['senha_'] ."'");
-$valida = mysql_fetch_array($query);
+/**
+ * Inicia sessão
+ */
+session_start();
 
-$user = $valida["login"];
-$pass = $valida["senha"];
-$nivel = $valida["nivel"];
+/**
+ * Efetua a conexão com o banco de dados
+ */
+$db['link'] = @mysql_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD);
 
-if($_POST['login_'] == '' || $_POST['senha_'] == ''){
+if ($db['link']) {
+	if (!mysql_select_db(DATABASE_NAME)) {
+		die('Não foi possível conectar ao Banco de Dados: '. mysql_error());
+	}
+} else {
+	die('Não foi possível conectar ao Banco de Dados: '. mysql_error());
+}
+
+if ($_POST['usu_login']) {
+	$usu_login = addslashes($_POST['usu_login']);
+	$usu_senha = addslashes($_POST['usu_senha']);
+	
+	$sql = "
+		SELECT
+			*
+		FROM
+			usuarios
+		WHERE
+			usu_login = '". $usu_login ."'
+			AND usu_senha = MD5('". $usu_senha ."')";
+	$resUsu = mysql_query($sql);
+	
+	if (mysql_num_rows($resUsu)) {
+		$regUsu = mysql_fetch_assoc($resUsu);
+		
+		foreach ($regUsu as $field => $value) {
+			$_SESSION['gb'][$field] = $value;
+		}
+		
+		header('Location: index.php');
+		die();
+	} else {
+		$login_error = true;
+	}
+}
+
+/**
+ * Engine de templates
+ */
+$template = new Smarty();
+$template->compile_dir = '../compile';
+$template->template_dir = 'template';
+
+$template->assign('login_error', $login_error);
+$template->assign('gb_version', GB_VERSION);
+$template->display('login.html');
 ?>
-<? include("../include/config.php");?>
-<HTML>
-<title><? echo $tsite?></title>
-<Script Language="JavaScript">
-function validate(form1) {
-if (form1.login_.value == "")
-{ alert("O Campo Login é obrigatório!");
-   form1.login_.focus();
-return (false);
-}
-if (form1.senha_.value == "")
-{ alert("O Campo Senha é obrigatório!");
-   form1.senha_.focus();
-   return (false);
-}
-return (true);
-}
-</script>
-<form action="login.php?nivel=<? echo $nivel?>" method="post" onsubmit="return validate(this);">
-  <table width="300" border="0" align="center" cellpadding="0" cellspacing="2">
-    <tr valign="top">
-      <td height="45" colspan="3" align="center"><strong><font size="<? echo $ttitulo?>" face="<? echo $fonte?>">Sistema
-        de Login</font></strong></td>
-    </tr>
-</table>
-
-<table border="0" align="center" cellpadding="0" cellspacing="3">
-    <tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Login:</font></td>
-      <td colspan="2"><input name="login_" type="text" size="25"></td></tr>
-<tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Senha:</font></td>
-      <td><input name="senha_" type="password" size="15"></td>
-	  <td><input name="logar" type="submit" value="Logar"></td>
-	  </tr>
-</table>
-</form>
-</HTML>
-<?
-} elseif($_POST['login_'] == $user && $_POST['senha_'] == $pass){
-setcookie("usuario", $_POST['login_'],0,"/");
-setcookie("senha", $_POST['senha_'],0,"/");
-setcookie("nivel",$nivel,0,"/");
-header("Location: administrar.php");
-} elseif($_POST['login_'] != $valida["login"] || $_POST['senha_'] != $valida["senha"]){
-?>
-<? include("../include/config.php");?>
-<HTML>
-<title><? echo $tsite?></title>
-<Script Language="JavaScript">
-function validate(form1) {
-if (form1.login_.value == "")
-{ alert("O Campo Login é obrigatório!");
-   form1.login_.focus();
-return (false);
-}
-if (form1.senha_.value == "")
-{ alert("O Campo Senha é obrigatório!");
-   form1.senha_.focus();
-   return (false);
-}
-return (true);
-}
-</script>
-<form action="login.php" method="post" onsubmit="return validate(this);">
-  <table width="300" border="0" align="center" cellpadding="0" cellspacing="2">
-    <tr valign="top">
-      <td height="45" colspan="3" align="center"><font size="<? echo $ttitulo?>" face="<? echo $fonte?>"><font color="#FF0000"><strong>Usuário ou Senha Inválidos</strong></font>
-	  <br><font size="1">Por favor tente novamente!</font>
-</font></td>
-    </tr>
-</table>
-  <table border="0" align="center" cellpadding="0" cellspacing="3">
-    <tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Login:</font></td>
-      <td colspan="2"><input name="login_" type="text" size="25"></td></tr>
-<tr>
-      <td width="60" align="right"><font face="<? echo $fonte;?>" size="<? echo $tfonte;?>">Senha:</font></td>
-      <td><input name="senha_" type="password" size="15"></td>
-	  <td><input name="logar" type="submit" value="Logar"></td>
-	  </tr>
-</table>
-</form>
-</HTML>
-<? }?>

@@ -1,0 +1,44 @@
+{literal}
+<script type="text/javascript">
+window.addEvent('domready', function() {
+	$('form_usuario').addEvent('submit', function(form) {
+		var CheckForm = new Form('form_usuario');
+		
+		if(!CheckForm.validate()) {
+			new Event(form).stop();
+		}
+	});
+});
+</script>
+{/literal}
+
+<h2>{if $usuario.usu_codigo}Editar{else}Adicionar{/if} Usuário</h2>
+
+<form id="form_usuario" action="?src=usuarios&p=action" method="post">
+	<fieldset>
+		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
+		
+		<input type="hidden" name="usu_codigo" value="{$usuario.usu_codigo}" />
+		
+		<p>
+			<label for="usu_nome"><strong>Nome (*):</strong></label>
+			<br /><input type="text" name="usu_nome" id="usu_nome" size="40" class="required" value="{$usuario.usu_nome}" />
+			
+			<br /><label for="usu_email"><strong>E-Mail (*):</strong></label>
+			<br /><input type="text" name="usu_email" id="usu_email" size="60" class="required email" value="{$usuario.usu_email}" />
+			
+			<br /><label for="usu_login"><strong>Login (*):</strong></label>
+			<br /><input type="text" name="usu_login" id="usu_login" size="30" class="required" value="{$usuario.usu_login}" />
+			
+			<br /><label for="usu_senha"><strong>Senha{if !$usuario.usu_codigo} (*){/if}:</strong></label>
+			<br /><input type="password" name="usu_senha" id="usu_senha" size="30" class="{if !$usuario.usu_codigo}required{/if} repeat" />
+			
+			<br /><label for="usu_senha_r"><strong>Repetir Senha{if !$usuario.usu_codigo} (*){/if}:</strong></label>
+			<br /><input type="password" name="usu_senha_r" id="usu_senha_r" size="30" class="{if !$usuario.usu_codigo}required{/if}" />
+		</p>
+		
+		<p>
+			<input type="submit" class="button" value="Salvar" />
+		</p>
+	</fieldset>
+</form>
