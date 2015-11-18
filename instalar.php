@@ -1,5 +1,5 @@
 <? 
-$versao = "v2.3.4";
+$versao = "v2.3.5";
 
 if($_GET['passo'] == ""){?>
 <script Language="JavaScript">

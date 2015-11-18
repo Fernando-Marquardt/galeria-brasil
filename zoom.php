@@ -5,6 +5,10 @@
 		<td>
 			<table width="329" height="247" border="0" cellpadding="0" cellspacing="1" bgcolor="<?= $cortexto?>">
 <?php
+if (empty($foto)) {
+	$foto = $imagens[0];
+}
+
 $res = getimagesize($dir . $foto);
 if ($res[1] > 265) {
 	$height = 265 ;

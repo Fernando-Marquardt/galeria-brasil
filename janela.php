@@ -19,14 +19,14 @@ if (mysql_num_rows($query) == 0) {
 } else {
 	$rs = mysql_fetch_array($query);
 	
+	$dir = "images/galeria/". $rs['pasta'] ."/";
+	
 	if (isset($_GET['foto'])) {
 		$foto = $_GET['foto'];
 	} else {
 		$foto = $rs['foto01'];
 	}
 }
-
-$dir = "images/galeria/". $rs['pasta'] ."/";
 ?>
 <script src="js/janelas_popup.js" language="JavaScript"></script>
 

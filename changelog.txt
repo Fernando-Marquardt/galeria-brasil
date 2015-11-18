@@ -1,3 +1,7 @@
+========== Versão 2.3.5 ===========
+
+[fixed] Um erro que ocorria quando a galeria não possuia foto de capa, ao abrir o popup da galeria
+
 ========== Versão 2.3.4 ===========
 
 [added] Possibilidade de inibir as funções de Imprimir e Enviar por E-Mail

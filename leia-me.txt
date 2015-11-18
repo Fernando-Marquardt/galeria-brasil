@@ -1,5 +1,5 @@
 ============================================================================================================================
-   Galeria Brasil v2.3.4 - http://www.sourceforge.net/projects/galeriabrasil
+   Galeria Brasil v2.3.5 - http://www.sourceforge.net/projects/galeriabrasil
 ============================================================================================================================
    Desenvolvido por: 
 	Sandro Porto <thiago@pegasusvideo.com.br>
