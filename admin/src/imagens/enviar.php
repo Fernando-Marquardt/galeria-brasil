@@ -13,6 +13,7 @@ $sql = "
 $resGal = mysql_query($sql);
 $galeria = mysql_fetch_assoc($resGal);
 
+$template->assign('sessid', session_id());
 $template->assign('galeria', $galeria);
 $template->display('src/imagens/enviar.html');
 ?>

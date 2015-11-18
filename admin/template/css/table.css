@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+
+.table {
+	border-collapse: collapse;
+}
+
+.table thead th {
+	background-image: url(../img/table_th_background.png);
+	background-color: #21611a;
+	background-repeat: repeat-x;
+	height: 23px;
+	border: 1px solid #3c3c3c;
+	padding-left: 5px;
+	color: #ffffff;
+}
+
+.table tbody td {
+	background-image: url(../img/table_td_background.png);
+	background-color: #d9ca5f;
+	background-repeat: repeat-x;
+	height: 21px;
+	border: 1px solid #3c3c3c;
+	padding-left: 5px;
+}

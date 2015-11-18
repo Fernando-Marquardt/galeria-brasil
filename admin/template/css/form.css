@@ -1,0 +1,61 @@
+@CHARSET "ISO-8859-1";
+
+label {
+	font-weight: bold;
+}
+
+input[type="text"], input[type="password"], input[type="file"], textarea {
+	background-image: url(../img/input_background.png);
+	background-color: #ffffff;
+	background-repeat: repeat-x;
+	border: 1px solid #3c3c3c;
+	padding: 2px;
+	margin-bottom: 5px;
+}
+
+button {
+	background: none;
+	width: auto;
+	overflow: visible;
+	text-align: center;
+	white-space: nowrap;
+	height: 26px;
+	line-height: 24px;
+}
+
+button span, em {
+	display: block;
+	height: 26px;
+	line-height: 24px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+button span {
+	background: url(../img/button_left.png) no-repeat 0 0;
+	padding-left: 5px;
+}
+
+button em {
+	font-style: normal;
+	background: url(../img/button_right.png) no-repeat 100% 0;
+	padding-right: 20px;
+	padding-left: 15px;
+}
+
+.floatingbox {
+	background: transparent url(../img/msg_arrow.gif) left center no-repeat;
+	position: absolute;
+	z-index: 200;
+	padding-left: 7px;
+}
+
+.floatingbox div {
+	display: block;
+	padding: 5px;
+	min-width: 150px;
+	max-width: 250px;
+	background-color: #f3e6e6;
+	border: 2px solid #924949;
+	border-left: 0;
+}

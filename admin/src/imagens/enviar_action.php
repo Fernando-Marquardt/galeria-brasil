@@ -1,38 +1,12 @@
 <?php
-require('../core/inc.config.php');
-require('../core/class.system.php');
+if (!$_SESSION['gb']['usu_codigo']) { header('Location: login.php'); die('Não autorizado'); }
 
-/**
- * Efetua a conexão com o banco de dados
- */
-$db['link'] = @mysql_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD);
-
-if ($db['link']) {
-	if (!@mysql_select_db(DATABASE_NAME)) {
-		die('Não foi possível conectar ao Banco de Dados: '. mysql_error());
-	}
-} else {
-	die('Não foi possível conectar ao Banco de Dados: '. mysql_error());
-}
-
-/**
- * Carrega as configurações do Banco de Dados
- */
-$sql = "
-	SELECT
-		*
-	FROM
-		config";
-$resCfg = mysql_query($sql);
-
-while ($regCfg = mysql_fetch_assoc($resCfg)) {
-	$_CONFIG[$regCfg['cfg_nome']] = $regCfg['cfg_valor'];
-}
+define('SEM_LAYOUT', 1);
 
 $resultado = array();
 $gal_codigo = addslashes($_GET['gal']);
 $gal_pasta = addslashes($_GET['f']);
-$usu_codigo = addslashes($_GET['u']);
+$usu_codigo = $_SESSION['gb']['usu_codigo'];
 
 if (isset($_FILES['photoupload'])) {
 	$arquivo = $_FILES['photoupload']['tmp_name'];

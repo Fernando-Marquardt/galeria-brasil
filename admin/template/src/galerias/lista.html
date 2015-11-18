@@ -12,7 +12,7 @@ function deletar(id) {
 
 <div id="submenu">
 	<ul>
-		<li><a href="?src=galerias&p=form"><img src="template/img/adicionar.png" alt="" /> Adicionar Galeria</a></li>
+		<li><span><a href="?src=galerias&p=form"><img src="template/img/adicionar.png" alt="" /> Adicionar Galeria</a></span></li>
 	</ul>
 </div>
 
@@ -22,10 +22,8 @@ function deletar(id) {
 	<tr>
 	{/if}
 		<td>
-			<a href="?src=imagens&p=lista&gal={$galeria.gal_codigo}">
-				<img src="imagem.php?gal={$galeria.gal_pasta}&img={$galeria.img_nome_arquivo}&thumb=2" alt="{$galeria.gal_titulo}" title="{$galeria.gal_titulo}" />
-				<br />{$galeria.gal_local} - <strong>{$galeria.total_imagens} fotos</strong>
-				<br />{$galeria.gal_data}
+			<a href="?src=imagens&p=lista&gal={$galeria.gal_codigo}" title="{$galeria.gal_titulo}" rel="{$galeria.gal_local} - <strong>{$galeria.total_imagens} fotos</strong><br />{$galeria.gal_data}" class="tips">
+				<img src="imagem.php?gal={$galeria.gal_pasta}&img={$galeria.img_nome_arquivo}&thumb=2" alt="{$galeria.gal_titulo}" title="" />
 			</a>
 			<div class="toolbar">
 				<a href="?src=galerias&p=form&id={$galeria.gal_codigo}"><img src="template/img/editar.png" alt="Editar" title="Editar" /></a>
@@ -48,6 +46,6 @@ function deletar(id) {
 	{/foreach}
 </table>
 
-<div id="paginacao">
-	{$paginacao}
+<div class="pagination">
+	<div>{$paginacao}</div>
 </div>

@@ -92,6 +92,7 @@ switch ($_GET['act']) {
 					(". $_SESSION['gb']['usu_codigo'] .", ". $gal_codigo_img .", '". $gal_titulo ."', '". $gal_local ."', '". $gal_pasta ."', '". System::format_date($gal_data, 'Y-m-d') ."', NOW())";
 
 			mkdir('../galerias/'. $gal_pasta);
+			chmod('../galerias/'. $gal_pasta, 0777);
 		}
 		
 		$qGal = mysql_query($sql);

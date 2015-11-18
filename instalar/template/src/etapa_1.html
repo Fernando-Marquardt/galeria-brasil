@@ -174,13 +174,13 @@
 </table>
 
 {if $testes.gif == false || $testes.jpg == false || $testes.png == false}
-<div class="aviso">
+<div class="notice">
 	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Atenção! Foi detectado que um ou mais tipos de imagem não é suportado pelo servidor. Caso o mesmo não seja habilitado, poderão haver inconsistências no sistema.
 </div>
 {/if}
 
 {if $permitir_prosseguir === false}
-<div class="aviso">
+<div class="notice">
 	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Foi detectado que um ou mais requisitos não foram atendidos e não será possível prosseguir com a instalação.
 </div>
 {else}

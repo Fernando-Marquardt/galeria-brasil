@@ -1,9 +1,9 @@
 <?php
-define('DATABASE_HOSTNAME', '{database_hostname}');
-define('DATABASE_USERNAME', '{database_username}');
-define('DATABASE_PASSWORD', '{database_password}');
-define('DATABASE_NAME', '{database_name}');
+define('DATABASE_HOSTNAME', 'localhost');
+define('DATABASE_USERNAME', 'root');
+define('DATABASE_PASSWORD', '');
+define('DATABASE_NAME', 'galeria');
 
-define('GB_INSTALADO', '{gb_instalado}');
-define('GB_VERSION', '3.0.1 Beta');
+define('GB_INSTALADO', '1');
+define('GB_VERSION', '3.1.0 Beta');
 ?>

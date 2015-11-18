@@ -1,20 +1,34 @@
 =====================================================================================
-									CHANGELOG
+	CHANGELOG
 =====================================================================================
 
-	Legenda:
-		[*] Corrigido
-		[+] Adicionado, melhorado
-		[-] Removido
+Legenda:
+	[*] Corrigido
+	[+] Adicionado, melhorado
+	[-] Removido
 
-	Versão 3.0.1 Beta:
+Versão 3.1.0 Beta:
 		
-			[+] Adicionado link na administração para visualizar a galeria
+	[+] Adicionada a possibilidade de aplicar marca d'água às imagens
+	[+] Adicionada a possibilidade de alterar as imagens de aviso do sistema através das Opções
+	[+] Uso do plugin Tips do Mootools na descrição de galerias, imagens, etc...
+	[+] No passo 3 da instalação, agora é fornecida uma dica de URL da galeria
+	[+] Implementado o uso de session no framework Fancy Upload
+	[+] O sistema agora tenta aplicar a permissão de Escrita e Leitura nas pastas criadas paras as galerias
+	[+] Implementado método que substitui o método json_encode() quando o mesmo não existir no servidor
+	[+] Uso parcial de Ajax na Galeria de Imagens
+		
+	[*] Corrigido erro no botão voltar, quando havia uma falha na instalação
+	[*] Alterada a forma como o instalador trata o arquivo de configuração, possibilitando a reinstalação
+
+Versão 3.0.1 Beta:
+		
+	[+] Adicionado link na administração para visualizar a galeria
 			
-			[*] Alterado o nome do campo Tabela para Nome do Banco na etapa 2 da instalação (*Cido Silva)
-			[*] Alterado o nome do campo Endereço do Site para URL do Site na etapa 3 da instalação e nas configurações (*Cido Silva)
-			[*] Alterado valor do CHMOD Somente Leitura para o correto, 0444
-			[*] Corrigida falha que não permitia quebrar linha nas tabelas quando houvessem mais que 3 galerias por linha
-			[*] Alterado o número de imagens por página para 8 na galeria e alterada a altura da janela para não surgir barra de rolagem
+	[*] Alterado o nome do campo Tabela para Nome do Banco na etapa 2 da instalação (*Cido Silva)
+	[*] Alterado o nome do campo Endereço do Site para URL da Galeria na etapa 3 da instalação e nas configurações (*Cido Silva)
+	[*] Alterado valor do CHMOD Somente Leitura para o correto, 0444
+	[*] Corrigida falha que não permitia quebrar linha nas tabelas quando houvessem mais que 3 galerias por linha
+	[*] Alterado o número de imagens por página para 8 na galeria e alterada a altura da janela para não surgir barra de rolagem
 			
-			[-] A configuração site_path foi removida por motivos de compatibilidade, tornando-a desnecessária
+	[-] A configuração site_path foi removida por motivos de compatibilidade, tornando-a desnecessária

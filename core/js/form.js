@@ -1,6 +1,6 @@
 /*
-	@author Fernando Marquardt
-	@version 0.2.0
+	@author Fernando Marquardt <fernando.marquardt@gmail.com>
+	@version 0.3.0
 	
 	Classe para manipulação de formulários
 	
@@ -8,6 +8,12 @@
 		- Mootools 1.2 ou superior
 		
 	** LOG **
+	
+	Versão 0.3.0 - 18/08/2008
+		[+] Acrescentado o modo de display floatingbox, que apresenta uma caixa flutuante ao lado do input contendo o erro
+		[+] Acrescentado o modo de display bottom, que apresenta a mensagem de erro abaixo do input
+		[+] Criados os métodos _showMessage e _hideMessage, que permite mostrar as mensagens de erro na forma tradicional
+		[*] Métodos _addError e _removeError foram desmembrados, removendo as funcionalidades para mostrar os erros
 	
 	Versão 0.2.0 - 10/06/2008
 		[*] Classe alterada para ser compatível com Mootools 1.2
@@ -22,16 +28,20 @@ var Form = new Class({
 			alphanum: "Este campo deve conter apenas letras, números, espaços ou sinais(. _ -)",
 			number: "Este campo deve conter apenas números",
 			email: "Este campo deve conter um E-Mail válido",
-			date: "Este campo deve conter uma data válida",
 			repeat: "Os campos devem conter o mesmo valor"
 		},
 		
 		display: {
-			errorLocation: 'before'
+			errorLocation: 'floatingbox'
+		},
+		
+		floatingBox: {
+			msgOffset: 3,
+			msgClass: 'floatingbox'
 		},
 		
 		styles: {
-			errorBgText: '',
+			errorBgText: '#FFFFFF',
 			errorColor: '#FF4F56',
 			errorBg: '#FF4F56'
 		},
@@ -42,8 +52,7 @@ var Form = new Class({
 			alphanum : /^[a-z0-9 ._-]+$/i,
 			number : /^[-+]?\d*\.?\d+$/,
 			phone : /^[\d\s ().-]+$/,
-			email : /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
-			date : /^[\d\/]{10}/i
+			email : /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i
 		}
 	},
 	
@@ -84,7 +93,7 @@ var Form = new Class({
 						}
 						this.arrRemoveError.erase(field);
 						
-						this._addError(field, type);
+						this._addError(field, type);	
 					}
 					
 					error_count++;
@@ -147,7 +156,8 @@ var Form = new Class({
 					this._addError(field_repeat, 'repeat');
 					
 					error_count++;
-				} else {
+				}
+				else {
 					this.arrRemoveError.include(field);
 					this.arrRemoveError.include(field_repeat);
 				}
@@ -176,6 +186,60 @@ var Form = new Class({
 			var input_id = input.id;
 		}
 		
+		input.set('morph', {
+			duration: 500
+		});
+		
+		if (input.bgImg == '') {
+			input.bgImg = input.getStyle('background-image');
+		}
+		
+		if (input.bgColor == '') {
+			input.bgColor = input.getStyle('background-color');
+		} else {
+			input.bgColor = '#FFFFFF';
+		}
+		
+		input.morph({
+			'background-color': this.options.styles.errorBg,
+			'background-image': 'none'
+		});
+		
+		var msgcontent = this.options.alerts[type];
+		
+		if (this.options.display.errorLocation == 'floatingbox') {
+			this._showFloatingBox(input_id, msgcontent);
+		} else {
+			this._showMessage(input, type);
+		}
+	},
+	
+	_removeError: function(input) {
+		if (input.id == '' || input.id == null) {
+			var input_id = input.name;
+		} else {
+			var input_id = input.id;
+		}
+		
+		input.morph({
+			'background-color': input.bgColor,
+			'background-image': input.bgImg
+		});
+		
+		if (this.options.display.errorLocation == 'floatingbox') {
+			this._hideFloatingBox(input_id);
+		} else {
+			this._hideMessage(input_id);
+		}
+	},
+	
+	_showMessage: function(input, type) {
+		if (input.id == '' || input.id == null) {
+			var input_id = input.name;
+		} else {
+			var input_id = input.id;
+		}
+		
 		if ($('error_'+ input_id) == null) {
 			var error = new Element('span', {
 				'styles': {
@@ -192,62 +256,138 @@ var Form = new Class({
 		
 		error.set('text', this.options.alerts[type]);
 		
-		if (this.options.display.errorLocation == 'before') {
-			error.setStyle('display', 'block');
-			error.injectBefore(input);
-		} else if (this.options.display.errorLocation == 'after') {
-			error.injectAfter(input);
+		switch (this.options.display.errorLocation) {
+			case 'before':
+				error.setStyle('display', 'block');
+				error.injectBefore(input);
+				break;
+			case 'bottom':
+				error.setStyle('display', 'block');
+				error.injectAfter(input);
+				break;
+			default:
+				error.injectAfter(input);
 		}
 		
-		input.set('morph', {
-			duration: 300
-		});
 		error.set('morph', {
-			duration: 300
+			duration: 500
 		});
 		
-		if (input.bgImg == '') {
-			input.bgImg = input.getStyle('background-image');
-		}
-		
-		if (input.bgColor == '') {
-			input.bgColor = input.getStyle('background-color');
-		}
-		
-		input.morph({
-			'background-color': this.options.styles.errorBg,
-			'background-image': 'none'
-		});
 		error.morph({
 			'opacity': 1	
 		});
 	},
 	
-	_removeError: function(input) {
-		if (input.id == '' || input.id == null) {
-			var input_id = input.name;
-		} else {
-			var input_id = input.id;
-		}
-		
+	_hideMessage: function(input_id) {
 		var error = ($('error_'+ input_id));
 		
 		if (error) {
 			error.set('morph', {
-				duration: 300,
+				duration: 500,
 				onComplete: function() {
 					error.destroy();
 				}
 			});
 			
-			input.morph({
-				'background-color': input.bgColor,
-				'background-image': input.bgImg
-			});
 			error.morph({
 				'opacity': 0
 			});
 		}
+	},
+	
+	_showFloatingBox: function(target, string) {
+		var msg;
+		var msgcontent;
+		
+		if (!$('form-error-'+ target)) {
+			msg = new Element('div', {
+				'id': 'form-error-'+ target,
+				'class': this.options.floatingBox.msgClass,
+				'styles': {
+					'opacity': 0
+				}
+			});
+			
+			msg.set('morph', {
+				duration: 500
+			});
+			
+			msgcontent = new Element('div', {
+				'id': 'form-error-msg-'+ target
+			});
+			
+			msgcontent.inject(msg);
+			msg.inject(document.body);
+		} else {
+			msg = $('form-error-'+ target);
+			msgcontent = $('form-error-msg-'+ target);
+		}
+		
+		msgcontent.set('html', string);
+		msg.setStyle('display', 'block');
+		
+		var msgheight = msg.offsetHeight;
+		var targetdiv = $(target);
+		
+		var targetheight = targetdiv.offsetHeight;
+		var targetwidth = targetdiv.offsetWidth;
+		var topposition = this._topPosition(targetdiv) - ((msgheight - targetheight) / 2);
+		var leftposition = this._leftPosition(targetdiv) + targetwidth + this.options.floatingBox.msgOffset;
+		
+		msg.setStyle('top', topposition);
+		msg.setStyle('left', leftposition);
+		
+		msg.morph({
+			'opacity': 1
+		});
+	},
+	
+	_hideFloatingBox: function(target) {
+		var msg = $('form-error-'+ target);
+		
+		msg.morph({
+			'opacity': 0
+		});
+	},
+	
+	_topPosition: function(target) {
+		var top = 0;
+
+		if (target.offsetParent) {
+			while (1) {
+				top += target.offsetTop;
+
+				if (!target.offsetParent) {
+					break;
+				}
+				
+				target = target.offsetParent;
+			}
+		} else if(target.y) {
+			top += target.y;
+		}
+
+		return top;
+	},
+	
+	_leftPosition: function(target) {
+		var left = 0;
+		
+		if (target.offsetParent) {
+			while (1) {
+				left += target.offsetLeft;
+				
+				if (!target.offsetParent) {
+					break;
+				}
+				
+				target = target.offsetParent;
+			}
+		} else if (target.x) {
+			left += target.x;
+		}
+		
+		return left;
 	}
 });
 Form.implement(new Options);

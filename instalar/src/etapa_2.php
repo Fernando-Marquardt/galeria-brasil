@@ -15,7 +15,7 @@ if ($configurar) {
 		} else {
 			$testes['tabela'] = true;
 			
-			$arquivo = file_get_contents('../core/inc.config.php');
+			$arquivo = file_get_contents('../core/inc.config.src.php');
 			
 			$arquivo = str_replace(
 				array('{database_hostname}', '{database_username}', '{database_password}', '{database_name}', '{gb_instalado}'),

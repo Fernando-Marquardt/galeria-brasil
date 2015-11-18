@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+@import url(common.css);
+@import url(form.css);
+
+#login {
+	background-image: url(../img/login_background.png);
+	background-repeat: no-repeat;
+	width: 303px;
+	height: 177px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -116px;
+	margin-left: -241px;
+	padding: 55px 0 0 180px;
+	text-align: left;
+}
+
+.button {
+	margin-top: 20px;
+}

@@ -53,7 +53,7 @@ if ($_POST['usu_login']) {
  * Engine de templates
  */
 $template = new Smarty();
-$template->compile_dir = '../compile';
+$template->compile_dir = 'compile';
 $template->template_dir = 'template';
 
 $template->assign('login_error', $login_error);

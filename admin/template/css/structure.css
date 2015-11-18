@@ -1,0 +1,128 @@
+@CHARSET "ISO-8859-1";
+
+#container {
+	background-image: url(../img/container_background_middle.gif);
+	background-color: #ffef80;
+	background-repeat: repeat-y;
+	width: 772px;
+	margin: 20px auto;
+	text-align: left;
+}
+
+/* Header
+-------------------------------------------------------------- */
+
+#header {
+	background-image: url(../img/container_background_top.gif);
+	background-repeat: no-repeat;
+	padding-top: 20px;
+	padding-left: 30px;
+}
+
+/* Menu
+-------------------------------------------------------------- */
+
+#menu {
+	background-image: url(../img/menu_background.png);
+	background-repeat: repeat-x;
+	height: 33px;
+	margin: 0 20px;
+	margin-bottom: 10px;
+	padding: 0 10px;
+	padding-top: 10px;
+}
+
+#menu li {
+	display: inline;
+	list-style: none;
+	margin-right: 5px;
+}
+
+#menu li img {
+	vertical-align: middle;
+}
+
+/* Sub-menu
+-------------------------------------------------------------- */
+
+#submenu {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#submenu li {
+	display: inline;
+	list-style: none;
+	background: none;
+	width: auto;
+	overflow: visible;
+	text-align: center;
+	white-space: nowrap;
+	height: 26px;
+	line-height: 24px;
+}
+
+#submenu a, #submenu span {
+	display: inline-block;
+	height: 26px;
+	line-height: 24px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+#submenu span {
+	background: url(../img/button_left.png) no-repeat 0 0;
+	padding-left: 5px;
+}
+
+#submenu a {
+	font-style: normal;
+	background: url(../img/button_right.png) no-repeat 100% 0;
+	padding-right: 20px;
+	padding-left: 15px;
+}
+
+#submenu li img {
+	vertical-align: middle;
+}
+
+/* Content
+-------------------------------------------------------------- */
+
+#content {
+	padding: 0 20px;
+}
+
+/* Footer
+-------------------------------------------------------------- */
+
+#footer {
+	background-image: url(../img/container_background_bottom.gif);
+	background-position: bottom;
+	background-repeat: no-repeat;
+	font-size: 10px;
+	color: #24721b;
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 40px;
+	padding-top: 20px;
+}
+
+/* Pagination
+-------------------------------------------------------------- */
+
+.pagination {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.pagination div {
+	background-image: url(../img/pagination_background.png);
+	padding-top: 2px;
+	height: 29px;
+	width: 350px;
+}
+
+.pagination img {
+	vertical-align: middle;
+}

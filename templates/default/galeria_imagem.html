@@ -1,0 +1,19 @@
+<img src="imagem.php?gal={$imagem.gal_pasta}&img={$imagem.img_nome_arquivo}&thumb=3" alt="{$imagem.img_mensagem}" {if $imagem.img_mensagem}title="{$imagem.img_mensagem}" rel=" " class="tips"{/if} />
+
+<div id="toolbar">
+	{if $imagem.img_anterior}
+	<a href="#" onclick="Galeria.imagem.escolher({$imagem.img_anterior});"><img src="templates/{$config.template}/img/anterior.png" alt="Anterior" /></a>
+	{/if}
+	{if $config.permitir_tamanho_real == 1}
+	<a href="#" onclick="Galeria.imagem.tamanho_real('{$imagem.gal_pasta}', '{$imagem.img_nome_arquivo}');"><img src="templates/{$config.template}/img/tamanho_real.png" alt="Ver Tamanho Real" /></a>
+	{/if}
+	{if $config.permitir_imprimir == 1}
+	<a href="#" onclick="Galeria.imagem.imprimir('{$imagem.gal_pasta}', '{$imagem.img_nome_arquivo}');"><img src="templates/{$config.template}/img/imprimir.png" alt="Imprimir" /></a>
+	{/if}
+	{if $config.permitir_indicar == 1}
+	<a href="#" onclick="Galeria.imagem.indicar('{$imagem.gal_codigo}', '{$imagem.img_codigo}');"><img src="templates/{$config.template}/img/indicar_foto.png" alt="Indicar a Foto" /></a>
+	{/if}
+	{if $imagem.img_proxima}
+	<a href="#" onclick="Galeria.imagem.escolher({$imagem.img_proxima});"><img src="templates/{$config.template}/img/proxima.png" alt="Próxima" /></a>
+	{/if}
+</div>

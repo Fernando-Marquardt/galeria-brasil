@@ -4,6 +4,12 @@
  * 
  * Log:
  * 
+ * (2.5.0) 30/07/2008
+ * 		- Incluido o método {@link watermark()}, que possibilita adicionar uma marca d'água na imagem
+ * 		- Foi acrescentado no método {@link get_info()} o parâmetro $src possibilitando que ele busque informações de outras imagens
+ * 		- O método {@link load_image()} foi alterado para retornar o resource da imagem, permitindo o uso do mesmo por outros métodos da classe além de carregar a imagem principal
+ * 		- Corrigida inconsistência no método {@link get_info()} que causava o retorno de dados incorretos quando a imagem era redimensionada
+ * 
  * (2.4.0) 01/04/2008
  * 		- Foi incluida a função {@link slice()}, que permite recortar uma parte da imagem
  * 		- Corrigido um bug com o parâmetro $filename do método imagegif quando o valor é null
@@ -12,7 +18,7 @@
  * 		- A função {@link draw()} foi modificada, agora ela não atribui a extensão ao arquivo, sendo então definido pelo usuário
  * 		- Ao requisitar a extensão de uma imagem JPEG, não será mais retornado .jpeg, e sim .jpg
  * 
- * (2.3) 31/03/2008
+ * (2.3.0) 31/03/2008
  * 		- A função {@link draw()} foi modificada, adicionando-se o parâmentro $filename e dando a possibilidade de salvar a imagem em uma pasta
  * 
  * Atualmente Suporta os seguintes tipos de imagem:
@@ -21,7 +27,7 @@
  * 		- PNG (2.0)
  * 
  * @author Fernando Marquardt <fernando.marquardt@gmail.com>
- * @version 2.4.0
+ * @version 2.5.0
  * @package Image
  * 
  * @todo Incluir suporte à outros tipos de imagem
@@ -58,15 +64,15 @@ class Image {
 	public function Image($src) {
 		$this->src = $src;
 		
-		$this->load_image();
+		$this->image = $this->load_image();
 	}
 	
 	/**
-	 * Carrega uma imagem para dentro da classe
+	 * Carrega uma imagem de acordo com seu tipo e retorna o resource
 	 *
 	 * @since 2.0
 	 * @param string $src Opcional. Caminho ou URL onde se encontra a imagem à ser carregada
-	 * @return boolean
+	 * @return resource
 	 */
 	public function load_image($src = null) {
 		if (is_null($src)) {
@@ -75,7 +81,7 @@ class Image {
 		
 		$error = false;
 		
-		switch ($this->get_info('imagetype')) {
+		switch ($this->get_info('imagetype', $src)) {
 			case IMAGETYPE_GIF:
 				if (!($image = @imagecreatefromgif($src))) {
 					trigger_error('Image Class: A versão da Biblioteca GD não possui suporte à GIF', E_USER_NOTICE);
@@ -98,10 +104,9 @@ class Image {
 		if ($error) {
 			trigger_error('Image Class: Ocorreu um erro na tentativa de criar a imagem', E_USER_WARNING);
 			
-			return false;
+			return null;
 		} else {
-			$this->image = $image;
-			return true;
+			return $image;
 		}
 	}
 	
@@ -121,17 +126,20 @@ class Image {
 	 * </code>
 	 * @since 2.0
 	 * @param string $info_name Nome da informação à ser requisitada
+	 * @param string $src Caminho ou URL onde se encontra a imagem à ser verificados os dados
 	 * @return int|string|boolean
 	 */
-	public function get_info($info_name) {
-		if ($info = getimagesize($this->src)) {
+	public function get_info($info_name, $src = null) {
+		$path = (is_null($src)) ? $this->src : $src;
+		
+		if ($info = getimagesize($path)) {
 		
 			switch ($info_name) {
 				case 'width':
-					$return = $info[0];
+					$return = (is_null($src)) ? imagesx($this->image) : $info[0];
 					break;
 				case 'height':
-					$return = $info[1];
+					$return = (is_null($src)) ? imagesy($this->image) : $info[1];
 					break;
 				case 'imagetype':
 					$return = $info[2];
@@ -452,6 +460,51 @@ class Image {
 		}
 	}
 
+	/**
+	 * Aplica uma marca d'água na imagem. Se {@link $pos_x} ou {@link $pos_y} não forem definidos (null), os mesmos serão calculados randomicamente
+	 * Se o valor não for definido (null) {@link $margin} será 20 e {@link $opacity} será 50
+	 *
+	 * @param string $image_path Caminho da imagem que será aplicada como marca d'água
+	 * @param int $pos_x Posição horizontal da imagem, caso não seja definida (null) será calculada randomicamente
+	 * @param int $pos_y Posição vertical da imagem, caso não seja definida (null) será calculada randomicamente
+	 * @param int $margin Margem que marca d'água ficará da borda, se não for definida será 20
+	 * @param int $opacity Opacidade da imagem que servirá de marca d'água , se não for definida será 50
+	 */
+	public function watermark($image_path, $pos_x = null, $pos_y = null, $margin = null, $opacity = null) {
+		$opacity = (is_null($opacity)) ? 50 : $opacity;
+		$margin = (is_null($margin)) ? 20 : $margin;
+		
+		$watermark = $this->load_image($image_path);
+		$watermark_width = imagesx($watermark);
+		$watermark_height = imagesy($watermark);
+		
+		if (is_null($pos_x)) {
+			$rand = rand(0, 2);
+			
+			if ($rand == 0) {
+				$pos_x = $margin;
+			} elseif($rand == 1) {
+				$pos_x = ($this->get_info('width') / 2) - ($watermark_width / 2);
+			} else{
+				$pos_x = $this->get_info('width') - $margin - $watermark_width;
+			}
+		}
+		
+		if (is_null($pos_y)) {
+			$rand = rand(0, 2);
+			
+			if ($rand == 0) {
+				$pos_y = $margin;
+			} elseif ($rand == 1) {
+				$pos_y = ($this->get_info('height') / 2) - ($watermark_height / 2);
+			} else {
+				$pos_y = $this->get_info('height') - $margin - $watermark_height;
+			}
+		}
+		
+		imagecopymerge($this->image, $watermark, $pos_x, $pos_y, 0, 0, $watermark_width, $watermark_height, $opacity);
+	}
+	
 	/**
 	 * Verifica o suporte aos IMAGETYPES
 	 *

@@ -16,12 +16,12 @@
 	</tbody>
 </table>
 {if $success === false}
-<div class="aviso">
+<div class="notice">
 	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Foi detectado que um ou mais itens não puderam ser configurados com sucesso.
 </div>
 
 <p align="center">
-	<a href="?e=4">« Voltar</a>
+	<a href="#" onclick="System.back();">« Voltar</a>
 </p>
 {else}
 <p align="center">
@@ -56,8 +56,8 @@ window.addEvent('domready', function() {
 			
 			<p>
 				<label for="config[site_url]"><strong>URL da Galeria (*):</strong></label>
-				<br /><input type="text" name="config[site_url]" id="config[site_url]" size="60" class="required" />
-				
+				<br /><input type="text" name="config[site_url]" id="config[site_url]" size="60" class="required" value="{$site_url}" />
+
 				<br /><label for="config[template]">Template:</label>
 				<br /><select name="config[template]">
 					{foreach item=template from=$templates}

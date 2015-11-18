@@ -12,7 +12,7 @@
 			<td>{$database_username}</td>
 		</tr>
 		<tr>
-			<th>Banco:</th>
+			<th>Tabela:</th>
 			<td>{$database_name}</td>
 		</tr>
 	</tbody>
@@ -64,12 +64,12 @@
 </table>
 
 {if $prosseguir === false}
-<div class="aviso">
+<div class="notice">
 	<img src="template/img/warning.png" alt="Aviso" title="Aviso" /> Foi detectado que um ou mais itens não foram completados com sucesso.
 </div>
 
 <p align="center">
-	<a href="?e=3">« Voltar</a>
+	<a href="#" onclick="System.back();">« Voltar</a>
 </p>
 {else}
 <p align="center">
@@ -96,7 +96,7 @@ window.addEvent('domready', function() {
 		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
 		
 		<p>
-			<label for="database_hostname">Endereço do Host (*):</label>
+			<label for="database_hostname">Hostname (*):</label>
 			<br /><input type="text" name="database_hostname" id="database_hostname" class="required" />
 			
 			<br /><label for="database_username">Nome de Usuário (*):</label>

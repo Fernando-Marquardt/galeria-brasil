@@ -1,0 +1,39 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: #e1c892;
+	color: #3c3c3c;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+}
+
+a:link, a:visited {
+	color: #24721b;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:active, a:hover {
+	color: #ffffff;
+}
+
+h2 {
+	height: 24px;
+	margin: 5px 0 20px 0;
+}
+
+h3 {
+	font-size: 18px;
+	margin: 5px 0 10px 0;
+}
+
+p {
+	margin: 10px 0 20px 0;
+}

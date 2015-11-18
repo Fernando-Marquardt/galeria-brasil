@@ -2,13 +2,13 @@
 
 {if $action == 'del'}
 	{if $success == true}
-	<div class="mensagem">Usuário deletado com sucesso!</div>
+	<div class="success">Usuário deletado com sucesso!</div>
 	
 	<p style="text-align: center;">
 		<a href="?src=usuarios&p=lista">Clique aqui para continuar</a>
 	</p>
 	{else}
-	<div class="erro">Usuário não pode ser deletado</div>
+	<div class="error">Usuário não pode ser deletado</div>
 	
 	<p style="text-align: center;">
 		<a href="javascript: System.back();">Clique aqui para voltar</a>
@@ -16,13 +16,13 @@
 	{/if}
 {else}
 	{if $success == true}
-	<div class="mensagem">Usuário salvo com sucesso!</div>
+	<div class="success">Usuário salvo com sucesso!</div>
 	
 	<p style="text-align: center;">
 		<a href="?src=usuarios&p=lista">Clique aqui para continuar</a>
 	</p>
 	{else}
-	<div class="erro">Usuário não pode ser salvo</div>
+	<div class="error">Usuário não pode ser salvo</div>
 	
 	<p style="text-align: center;">
 		<a href="javascript: System.back();">Clique aqui para voltar</a>

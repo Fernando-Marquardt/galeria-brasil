@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+
+#galerias {
+	width: 750px;
+}
+
+#galerias td {
+	text-align: center;
+	padding: 5px;
+}
+
+#galerias td > a > img {
+	background-color: #ffffff;
+	padding: 1px;
+	border: 1px solid #222222;
+}
+
+#galerias td > a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	font-size: 11px;
+}

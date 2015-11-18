@@ -29,8 +29,11 @@ if ($configurar) {
 			$templates[] = $pasta;
 		}
 	}
+	
+	$site_url = 'http://'. ((!empty($_SERVER['HTTP_HOST'])) ? strtolower($_SERVER['HTTP_HOST']) : ((!empty($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : getenv('SERVER_NAME'))) ."/galeria";
 }
 
+$template->assign('site_url', $site_url);
 $template->assign('configurar', $configurar);
 $template->assign('success', $success);
 $template->assign('templates', $templates);

@@ -1,28 +1,28 @@
 =====================================================================================
-	Galeria Brasil 3.0.0 Beta 1 - http://sourceforge.net/projects/galeriabrasil
+	Galeria Brasil 3.1.0 Beta - http://sourceforge.net/projects/galeriabrasil
 =====================================================================================
 
 	Desenvolvido por:
 			Fernando Marquardt <fernando.marquardt@gmail.com>
 			
-	Você pode tirar suas dúvidas no fórum do site do projeto, que você encontra no
-	endereço http://sourceforge.net/forum/forum.php?forum_id=760903 ou pelo fórum
+	VocÃª pode tirar suas dÃºvidas no fÃ³rum do site do projeto, que vocÃª encontra no
+	endereÃ§o http://sourceforge.net/forum/forum.php?forum_id=760903 ou pelo fÃ³rum
 	http://www.equipelider.com.br/galeriabrasil/
 	
 =====================================================================================
-									REQUISITOS
+	REQUISITOS
 =====================================================================================
 	
-	Requisitos necessários para utilizar a galeria:
+	Requisitos necessÃ¡rios para utilizar a galeria:
 	
 		- Servidor HTTP (Apache, IIS, TomCat, etc.)
 		- PHP 5 ou superior
 		- MySQL 4.1 ou superior
-		- GD2 com suporte à JPEG, PNG e GIF
+		- GD2 com suporte Ã  JPEG, PNG e GIF
 		- Flash Player 9 ou superior
 		
 =====================================================================================
-						TECNOLOGIAS UTILIZADAS NO DESENVOLVIMENTO
+	TECNOLOGIAS UTILIZADAS NO DESENVOLVIMENTO
 =====================================================================================
 	
 	Foram utilizadas as seguintes tecnologias/softwares para desenvolver a Galeria
@@ -36,23 +36,25 @@
 		- Mootools (http://www.mootools.net/)
 	
 =====================================================================================
-									COMO INSTALAR
+	COMO INSTALAR
 =====================================================================================
 
-	1º 	Descompacte os arquivos em uma pasta do seu sistema.
+	1Âº 	Descompacte os arquivos em uma pasta do seu sistema.
 	
-	2º 	Envie estes arquivos através de FTP para o seu servidor e de permissão
+	2Âº 	Envie estes arquivos atravÃ©s de FTP para o seu servidor e de permissÃ£o
 		de leitura e escrita (CHMOD 0777 no Linux) nos seguintes arquivos e pastas:
 			- core/inc.config.php
 			- galerias/
 			- compile/
+			- instalar/compile
+			- admin/compile
 	
-	3º 	Cria uma tabela no banco de dados MySQL
+	3Âº 	Cria uma tabela no banco de dados MySQL
 	
-	4º	Acesse a pasta instalar no endereço onde está sua galeria.
+	4Âº	Acesse a pasta instalar no endereÃ§o onde estÃ¡ sua galeria.
 		E siga os passos citados na tela.
 		Exemplo: http://www.seusite.com.br/galeria/instalar
 		
-	5º 	Terminada a instalação altere as permissões do arquivo core/inc.config.php
+	5Âº 	Terminada a instalaÃ§Ã£o altere as permissÃµes do arquivo core/inc.config.php
 		para Somente Leitura (CHMOD 0444 no Linux) e remova a pasta instalar/ do seu 
 		servidor.

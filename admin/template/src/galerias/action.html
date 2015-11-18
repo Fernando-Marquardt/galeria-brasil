@@ -2,7 +2,7 @@
 
 {if $action == 'del'}
 	{if $success == true}
-	<div class="mensagem">
+	<div class="success">
 		Galeria deletada com sucesso!
 		
 		{if $possui_imagens == true}
@@ -16,7 +16,7 @@
 		<a href="?src=galerias&p=lista">Clique aqui para continuar</a>
 	</p>
 	{else}
-	<div class="erro">Galeria não pode ser deletada</div>
+	<div class="error">Galeria não pode ser deletada</div>
 	
 	<p style="text-align: center;">
 		<a href="javascript: System.back();">Clique aqui para voltar</a>
@@ -24,13 +24,13 @@
 	{/if}
 {else}
 	{if $success == true}
-	<div class="mensagem">Galeria salva com sucesso!</div>
+	<div class="success">Galeria salva com sucesso!</div>
 	
 	<p style="text-align: center;">
 		<a href="?src=imagens&p=lista&gal={$gal_codigo}">Clique aqui para continuar</a>
 	</p>
 	{else}
-	<div class="erro">Galeria não pode ser salva</div>
+	<div class="error">Galeria não pode ser salva</div>
 	
 	<p style="text-align: center;">
 		<a href="javascript: System.back();">Clique aqui para voltar</a>

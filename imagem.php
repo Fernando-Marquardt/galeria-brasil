@@ -41,7 +41,21 @@ switch ($_GET['thumb']) {
 		if ($size[0] > 400 || $size[1] > 400) {
 			$img->resize(400, 400, 'both');
 		}
+		
+		
+		if (file_exists('galerias/marca.png')) {
+			$watermark = getimagesize('galerias/marca.png');
+			
+			$pos_x = $img->get_info('width') - 5 - $watermark[0];
+			$pos_y = $img->get_info('height') - 5 - $watermark[1];
+			
+			$img->watermark('galerias/marca.png', $pos_x, $pos_y, 5);
+		}
 		break;
+	default:
+		if (file_exists('galerias/marca.png')) {
+			$img->watermark('galerias/marca.png');
+		}
 }
 
 $img->draw();

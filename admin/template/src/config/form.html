@@ -14,7 +14,7 @@ window.addEvent('domready', function() {
 
 <h2>Configurações</h2>
 
-<form id="form_config" action="?src=config&p=action" method="post">
+<form id="form_config" action="?src=config&p=action" method="post" enctype="multipart/form-data">
 	<fieldset>
 		<strong>Obs.: Os campos com asterístico (*) são obrigatórios</strong>
 		
@@ -26,7 +26,7 @@ window.addEvent('domready', function() {
 			<br /><input type="text" name="config[email_admin]" id="config[email_admin]" size="60" class="required email" value="{$config.email_admin}" />
 			
 			<p>
-				<label for="config[site_url]"><strong>URL do Site (*):</strong></label>
+				<label for="config[site_url]"><strong>URL da Galeria (*):</strong></label>
 				<br /><input type="text" name="config[site_url]" id="config[site_url]" size="60" class="required" value="{$config.site_url}" />
 				
 				<br /><label for="config[template]">Template:</label>
@@ -52,8 +52,45 @@ window.addEvent('domready', function() {
 			</p>
 		</p>
 		
+		<p><strong>Obs.: Deixe os campos de imagens em branco caso não queira substituir a imagem</strong></p>
+		
 		<p>
-			<input type="submit" class="button" value="Salvar" />
+			<label for="imagem_marca"><strong>Imagem de Marca D'Água:</strong></label>
+			
+			{if $imagem_marca}
+			<br /><img src="../galerias/marca.png" alt="Marca D'Água" title="Marca D'Água" />
+			<br /><input type="checkbox" name="deletar_marca" id="deletar_marca" value="1" /><label for="deletar_marca">Deletar Imagem de Marca D'Água</label>
+			{/if}
+			
+			<br /><input type="file" name="imagem_marca" />
+			
+			
+		</p>
+		
+		<p>
+			<label for="imagem_nao_possui"><strong>Quando a galeria não possuir imagem usar:</strong></label>
+			
+			<br />
+			<a href="../galerias/nao_possui_imagem.png" target="_blank">
+				<img src="../galerias/nao_possui_imagem.png" alt="Não Possui Imagem" title="Não Possui Imagem" width="200" />
+			</a>
+			
+			<br /><input type="file" name="imagem_nao_possui" />
+		</p>
+		
+		<p>
+			<label for="imagem_nao_encontrada"><strong>Quando imagem não for encontrada substituir por:</strong></label>
+			
+			<br />
+			<a href="../galerias/imagem_nao_encontrada.png" target="_blank">
+				<img src="../galerias/imagem_nao_encontrada.png" alt="Imagem não encontrada" title="Imagem não encontrada" width="200" />
+			</a>
+			
+			<br /><input type="file" name="imagem_nao_encontrada" />
+		</p>
+		
+		<p>
+			<button type="submit"><span><em>Salvar</em></span></button>
 		</p>
 	</fieldset>
 </form>

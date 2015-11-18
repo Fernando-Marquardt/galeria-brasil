@@ -69,6 +69,18 @@ var System = {
 			} catch(e) {}
 			
 			try {
+				if (properties.status) {
+					prop += ",status="+ properties.status;
+				}
+			} catch(e) {}
+			
+			try {
+				if (properties.toolbar) {
+					prop += ",toolbar="+ properties.toolbar;
+				}
+			} catch(e) {}
+			
+			try {
 				if (properties.resizable) {
 					prop += ",resizable="+ properties.resizable;
 				}
@@ -91,6 +103,33 @@ var System = {
 			} else {
 				window.close();
 			}
+		}
+	},
+	
+	message: {
+		open: function(name, message) {
+			var size = window.document.getSize();
+			var width = 290;
+			var left = (size.x / 2) - (width / 2);
+			var top = (size.y / 2);
+		
+			var carregando = new Element('div', {
+				'class': 'floating_message',
+				'id': 'message-'+ name,
+				'html': message,
+				'styles': {
+					'position': 'absolute',
+					'width': width,
+					'left': left,
+					'top': top
+				}
+			});
+			
+			carregando.inject(document.body);
+		},
+		
+		close: function(name) {
+			$('message-'+ name).destroy();
 		}
 	},
 	

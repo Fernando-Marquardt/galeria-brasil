@@ -1,5 +1,6 @@
 <?php
 require('../core/inc.config.php');
+require('../core/inc.json.php');
 require('../core/class.system.php');
 require('../core/class.pagination.php');
 require('../core/Smarty/Smarty.class.php');

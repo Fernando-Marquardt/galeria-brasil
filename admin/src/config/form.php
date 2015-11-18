@@ -9,6 +9,11 @@ while ($pasta = readdir($od)) {
 	}
 }
 
+if (file_exists('../galerias/marca.png')) {
+	$imagem_marca = true;
+}
+
+$template->assign('imagem_marca', $imagem_marca);
 $template->assign('templates', $templates);
 $template->assign('config', $_CONFIG);
 $template->display('src/config/form.html');

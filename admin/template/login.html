@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	
-	<link href="template/login.css" type="text/css" rel="stylesheet" />
-	<link href="template/form.css" type="text/css" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="template/css/login.css" />
 	
 	<script type="text/javascript" src="../core/js/mootools.js"></script>
 	<script type="text/javascript" src="../core/js/form.js"></script>
@@ -27,25 +26,19 @@
 	<title>Galeria Brasil {$gb_version} - Login</title>
 </head>
 <body>
-
-<div id="login">
-	{if $login_error == true}
-	<div class="login_error">Usuário ou senha incorretos</div>
-	{/if}
-	
-	<form action="login.php" method="post" id="form_login">
-		<fieldset style="border: 0;">
+<div id="container">
+	<div id="login">
+		<form action="login.php" method="post" id="form_login">
 			<label for="usu_login">Login:</label>
 			<br /><input type="text" name="usu_login" id="usu_login" size="30" class="required" />
 			<br /><label for="usu_senha">Senha:</label>
 			<br /><input type="password" name="usu_senha" id="usu_senha" size="30" class="required" />
 			
-			<p>
-				<input type="submit" class="button" value="Login" />
-			</p>
-		</fieldset>
-	</form>
+			<div class="button">
+				<button type="submit"><span><em>Entrar</em></span></button>
+			</div>
+		</form>
+	</div>
 </div>
-
 </body>
 </html>

@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `galerias` (
 	`gal_pasta` varchar(30) NOT NULL,
 	`gal_data` date NOT NULL,
 	`gal_data_cadastro` datetime NOT NULL,
-	PRIMARY KEY  (`gal_codigo`)
+	PRIMARY KEY  (`gal_codigo`),
 	KEY `gal_codigo_usu` (`gal_codigo_usu`,`gal_codigo_img`)
 ) ENGINE=InnoDB ;
 

@@ -142,7 +142,7 @@ window.addEvent('load', function() {
 	<a href="?src=imagens&p=lista&gal={$galeria.gal_codigo}">Voltar à galeria</a>
 </p>
 
-<form action="enviar_imagem.php?gal={$galeria.gal_codigo}&f={$galeria.gal_pasta}&u={$usuario.usu_codigo}" method="post" enctype="multipart/form-data" id="form_imagens">
+<form action="?src=imagens&p=enviar_action&SESSID={$sessid}&gal={$galeria.gal_codigo}&f={$galeria.gal_pasta}" method="post" enctype="multipart/form-data" id="form_imagens">
 	<div id="loading">
 		<img src="../core/FancyUpload/assets/uploading.gif" alt="" /> Carregando...
 	</div>

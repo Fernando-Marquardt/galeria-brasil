@@ -1,41 +1,44 @@
 var Galeria = {
-	img: null,
-	gal_pasta: null,
-	gal_codigo: null,
-	arquivo: null,
-	mensagem: null,
-	
 	imagem: {
-		escolher: function(gal_pasta, gal_codigo, img, arquivo, mensagem) {
-			Galeria.img = img;
-			Galeria.gal_pasta = gal_pasta;
-			Galeria.gal_codigo = gal_codigo;
-			Galeria.arquivo = arquivo;
-			Galeria.mensagem = mensagem;
-			
-			$('capa').src = "imagem.php?gal="+ gal_pasta +"&img="+ arquivo +"&thumb=3";
-			$('capa').alt = mensagem;
-			$('capa').title = mensagem;
+		escolher: function(img_codigo) {
+			var request = new Request({
+				url: 'galeria_imagem.php?id='+ img_codigo,
+				method: 'get',
+				onRequest: function() {
+					System.message.open('carregando', 'Carregando...');
+				},
+				onSuccess: function(response) {
+					System.message.close('carregando');
+					
+					$('imagem').set('html', response);
+					
+					var tips = new Tips('.tips', {
+						onShow: function(tip) {
+							tip.fade('in');
+						},
+						onHide: function(tip) {
+							tip.fade('out');
+						}
+					});
+				},
+				onFailure: function(instance) {
+					System.message.close('carregando');
+					
+					System.message.open('falha', 'A requisição falhou');
+				}
+			}).send();
 		},
 		
-		tamanho_real: function() {
-			System.window.open('imagem.php?gal='+ Galeria.gal_pasta +'&img='+ Galeria.arquivo, {scrollbars: 'yes', resizable: 'yes', name: 'ImagemTamanhoReal'});
+		tamanho_real: function(gal_pasta, img_nome_arquivo) {
+			System.window.open('imagem.php?gal='+ gal_pasta +'&img='+ img_nome_arquivo, {scrollbars: 'yes', resizable: 'yes', name: 'ImagemTamanhoReal'});
 		},
 		
-		imprimir: function() {
-			System.window.open('imprimir.php?gal='+ Galeria.gal_pasta +'&img='+ Galeria.arquivo, {scrollbars: 'yes', resizable: 'yes', name: 'ImagemImprimir'});
+		imprimir: function(gal_pasta, img_nome_arquivo) {
+			System.window.open('imprimir.php?gal='+ gal_pasta +'&img='+ img_nome_arquivo, {scrollbars: 'yes', resizable: 'yes', name: 'ImagemImprimir'});
 		},
 		
-		indicar: function() {
-			System.window.open('indicar.php?gal='+ Galeria.gal_codigo +'&img='+ Galeria.img, {width: 400, height: 350,scrollbars: 'yes', resizable: 'no', name: 'ImagemIndicar', position: {x: 'center', y: 'middle'}});
+		indicar: function(gal_codigo, img_codigo) {
+			System.window.open('indicar.php?gal='+ gal_codigo +'&img='+ img_codigo, {width: 400, height: 350,scrollbars: 'yes', resizable: 'no', name: 'ImagemIndicar', position: {x: 'center', y: 'middle'}});
 		}
-	},
-	
-	configurar: function(gal_pasta, gal_codigo, img, arquivo, mensagem) {
-		Galeria.img = img;
-		Galeria.gal_pasta = gal_pasta;
-		Galeria.gal_codigo = gal_codigo;
-		Galeria.arquivo = arquivo;
-		Galeria.mensagem = mensagem;
 	}
-};
+}
