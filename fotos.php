@@ -5,7 +5,7 @@
 $handle = opendir($dir);
 $ext = "jpg";
 $indice = 0;
-$ipp = 4;
+$ipp = 12;
 
 while (false !== ($file = readdir($handle)))
 {
