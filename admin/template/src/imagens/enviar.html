@@ -6,14 +6,18 @@
 window.addEvent('load', function() {
  
 	var swiffy = new FancyUpload2($('status'), $('images-list'), {
-		'url': $('form_imagens').action,
-		'fieldName': 'photoupload',
-		'limitFiles': 20,
-		'path': '../core/FancyUpload/Swiff.Uploader.swf',
-		'onLoad': function() {
+		url: $('form_imagens').action,
+		fieldName: 'photoupload',
+		path: '../core/FancyUpload/Swiff.Uploader.swf',
+		onLoad: function() {
 			$('loading').destroy();
 			$('status').removeClass('hide');
-		}
+			
+			this.options.typeFilter = {'Imagens (*.jpg, *.jpeg, *.gif, *.png)': '*.jpg; *.jpeg; *.gif; *.png'};
+		},
+		limitFiles: 50,
+		debug: true,
+		target: 'add-image'
 	});
  
 	/**
@@ -21,7 +25,7 @@ window.addEvent('load', function() {
 	 */
  
 	$('add-image').addEvent('click', function() {
-		swiffy.browse({'Images (*.jpg, *.jpeg, *.gif, *.png)': '*.jpg; *.jpeg; *.gif; *.png'});
+		swiffy.browse();
 		return false;
 	});
  

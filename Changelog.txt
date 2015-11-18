@@ -6,6 +6,10 @@ Legenda:
 	[*] Corrigido, Alterado
 	[+] Adicionado, melhorado
 	[-] Removido
+
+Versão 3.1.2 Beta:
+	[*] Corrigida falha que não permitia os botões de upload funcionarem corretamente
+	[*] Revisado e corrido erro com sessions no upload de imagens
 	
 Versão 3.1.1 Beta:
 	[+] Fancy Upload atualizado, agora com suporte à Flash 10

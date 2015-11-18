@@ -5,5 +5,5 @@ define('DATABASE_PASSWORD', '{database_password}');
 define('DATABASE_NAME', '{database_name}');
 
 define('GB_INSTALADO', '{gb_instalado}');
-define('GB_VERSION', '3.1.1 Beta');
+define('GB_VERSION', '3.1.2 Beta');
 ?>

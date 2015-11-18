@@ -9,6 +9,10 @@ if (GB_INSTALADO !== '1') {
 	header('Location: instalar/index.php');
 }
 
+if ($_GET['sessid']) {
+	session_id($_GET['sessid']);
+}
+
 session_start();
 
 if (!$_SESSION['gb']['usu_codigo']) { header('Location: login.php'); die('Não autorizado'); }

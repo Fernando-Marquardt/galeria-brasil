@@ -14,7 +14,7 @@ if (isset($_FILES['photoupload'])) {
 	$error = false;
 	$size = false;
 	
-	if (!is_uploaded_file($arquivo) || ($_FILES['photoupload']['size'] > 2 * 1024 * 1024)) {
+	if (!@is_uploaded_file($arquivo) || ($_FILES['photoupload']['size'] > 2 * 1024 * 1024)) {
 		$error = 'Envie apenas imagens com tamanho menor que 2Mb!';
 	}
 	
@@ -42,7 +42,7 @@ if (isset($_FILES['photoupload'])) {
 				,". $usu_codigo ."
 				,'". $arquivo_nome ."'
 				, NOW());";
-		$iImg = mysql_query($sql);
+		$iImg = @mysql_query($sql);
 		
 		if (!$iImg) {
 			$error = 'A imagem não pode ser adicionada ao banco de dados';
